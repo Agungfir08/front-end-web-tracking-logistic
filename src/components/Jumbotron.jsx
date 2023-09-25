@@ -4,7 +4,7 @@ import LogisticLogo from "../assets/kalla-logistic-logo.svg";
 import LogisticIllustration from "../assets/kalla-logistic-illustarion.svg";
 function Jumbotron() {
   return (
-    <section class="bg-center bg-no-repeat bg-[url('D:\Kalla\frontend\front-end-web-tracking-logistic\src\assets\IndonesiaMap.png')] bg-cover">
+    <section class="bg-center bg-no-repeat bg-[url('./assets/IndonesiaMap.png')] bg-cover">
       <div className=" max-w-screen-xl mx-auto px-6 sm:px-8">
         <div className="flex justify-center items-center sm:flex-col sm:gap-5 gap-16">
           <div className="basis-1/2 flex flex-col justify-start sm:items-center">

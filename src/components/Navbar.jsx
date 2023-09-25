@@ -90,7 +90,7 @@ function Navbar() {
         </div>
       </div>
       {open && (
-        <div className=" flex justify-center border-2 border-gray-400 mx-7 my-2 p-3 rounded-lg md:hidden">
+        <div className=" transition flex justify-center border-2 border-gray-400 mx-7 my-2 p-3 rounded-lg md:hidden">
           <NavLinks />
         </div>
       )}

@@ -105,10 +105,10 @@ function Tracking() {
               <TimelineHeader className="h-3">
                 <TimelineIcon color="blue" />
                 <div className="flex justify-between w-full items-center">
-                  <p className=" text-sm sm:text-xs font-medium w-fit">
+                  <p className=" text-sm sm:text-xs font-medium">
                     Dimasukkan dalam sistem
                   </p>
-                  <p className=" text-sm sm:text-xs text-end">
+                  <p className=" text-sm sm:text-xs text-end whitespace-nowrap">
                     2023-07-27
                     <br />
                     14:20:29
@@ -124,7 +124,7 @@ function Tracking() {
                   <p className=" text-sm sm:text-xs font-medium">
                     Dalam proses pengecekan
                   </p>
-                  <p className=" text-sm sm:text-xs text-end">
+                  <p className=" text-sm sm:text-xs text-end whitespace-nowrap">
                     2023-07-27
                     <br />
                     14:20:29
@@ -140,7 +140,7 @@ function Tracking() {
                   <p className=" text-sm sm:text-xs font-medium">
                     Dalam Perjalan [IMRAN]
                   </p>
-                  <p className=" text-sm sm:text-xs text-end">
+                  <p className=" text-sm sm:text-xs text-end whitespace-nowrap">
                     2023-07-27
                     <br />
                     14:20:29
@@ -155,7 +155,7 @@ function Tracking() {
                   <p className=" text-sm sm:text-xs font-medium">
                     Diterima Oleh [Rian]
                   </p>
-                  <p className=" text-sm sm:text-xs text-end">
+                  <p className=" text-sm sm:text-xs text-end whitespace-nowrap">
                     2023-07-27
                     <br />
                     14:20:29
