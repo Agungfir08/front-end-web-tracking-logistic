@@ -41,12 +41,12 @@ function Navbar() {
       className={`bg-white sm:${
         open ? "pb-1" : "p-0"
       } z-20 w-full sticky top-0`}>
-      <div className=" max-w-screen-xl mx-auto flex justify-between items-center sm:px-7 py-8 sm:py-2 ">
+      <div className=" max-w-screen-xl mx-auto flex justify-between items-center px-7 py-8 sm:py-2 ">
         <a href="#">
           <img
             src={Logo}
             alt="Logo Kalla"
-            className="sm:w-[100px] sm:h-[35px] w-44 h-16"
+            className="w-[100px] h-[35px] pt-2 md:w-44 md:h-16"
           />
         </a>
         <button

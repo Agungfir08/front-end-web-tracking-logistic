@@ -11,6 +11,8 @@ import {
 
 function Tracking() {
   return (
+    <>
+    {/* <div class="flex-shrink-0 border-4 border-green-500 backdrop-filter backdrop-blur w-1/3"> */}
     <div className="flex flex-col gap-1">
       <h1 className=" font-semibold">Tracking results</h1>
       <div className="bg-white rounded-lg px-8 py-6 flex flex-col w-[320px] h-[440px] md:w-[400px] md:h-[500px] justify-between">
@@ -159,6 +161,10 @@ function Tracking() {
         </div>
       </div>
     </div>
+    {/* </div> */}
+    
+    </>
+    
   );
 }
 
