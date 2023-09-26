@@ -23,7 +23,7 @@ function TrackOrder() {
   return (
     <div className=" max-screen-w-xl mx-auto">
       <div className="flex flex-col items-center gap-5 sm:px-7">
-        <h1 className=" font-bold text-2xl sm:text-xl">Cek Delivery Order</h1>
+        <h1 className=" font-bold text-2xl sm:text-lg">Cek Delivery Order</h1>
         <form className="sm:w-full">
           <div className="flex justify-center">
             <div className="relative sm:w-full">
