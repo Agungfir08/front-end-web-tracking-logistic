@@ -1,24 +1,34 @@
-import React, { useEffect } from "react";
-import { useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { useFormik } from "formik";
 
 function TrackOrder() {
-  const [numberDO, setNumberDO] = useState("");
-
   const orderRef = useRef("");
 
+  const formik = useFormik({
+    initialValues: {
+      numberDO: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  const handleChange = (e) => {
+    const regex = /^[a-zA-Z0-9]*$/;
+    const inputValue = e.target.value;
+    if (regex.test(inputValue)) {
+      formik.handleChange(e);
+    }
+  };
+
   const clearInput = () => {
-    orderRef.current.value = "";
+    formik.setFieldValue("numberDO", "");
     orderRef.current.focus();
   };
 
-  const handleInput = (e) => {
-    const { value } = e.target;
-    setNumberDO(value);
-  };
-
   useEffect(() => {
-    console.log(numberDO);
-  }, [numberDO]);
+    console.log(formik.values.numberDO);
+  }, [formik.values.numberDO]);
 
   return (
     <div className=" mt-2.5">
@@ -29,14 +39,15 @@ function TrackOrder() {
             <div className="relative sm:w-full">
               <input
                 type="text"
+                name="numberDO"
                 placeholder="DOXXXXXXXXXX"
                 autoComplete="off"
                 className=" border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none"
-                onChange={handleInput}
-                value={numberDO}
+                onChange={handleChange}
+                value={formik.values.numberDO}
                 ref={orderRef}
               />
-              {
+              {formik.values.numberDO.length > 0 && (
                 <div
                   className="absolute right-0 inset-y-0 flex items-center mr-3"
                   onClick={clearInput}>
@@ -55,7 +66,7 @@ function TrackOrder() {
                     />
                   </svg>
                 </div>
-              }
+              )}
             </div>
             <button
               type="submit"
