@@ -3,26 +3,26 @@ import { useRef, useState } from "react";
 
 function NavLinks() {
   return (
-    <ul className="w-full text-base sm:text-sm sm:text-center font-semibold flex md:justify-end items-center gap-10 sm:block">
+    <ul className="w-full text-base sm:text-xs md:text-sm sm:text-center font-semibold flex  items-center gap-12 sm:block">
       <li>
         <a
           href="#"
           className="text-gray-900 cursor-pointer transition hover:text-[--maincolor] sm:hover:text-white sm:hover:bg-[--maincolor] sm:rounded-md sm:block sm:py-[5px]">
-          Tracking
+          Home
         </a>
       </li>
       <li>
         <a
           href="#"
           className="text-gray-900 cursor-pointer transition hover:text-[--maincolor] sm:hover:text-white sm:hover:bg-[--maincolor] sm:rounded-md sm:block sm:py-[5px]">
-          Tentang kami
+          About Us
         </a>
       </li>
       <li>
         <a
           href="#"
           className="text-[--maincolor] cursor-pointer px-10 py-2 border-[3px] border-[--maincolor] rounded-xl transition hover:text-white hover:bg-[--maincolor] sm:border-none sm:py-[5px] sm:text-gray-900 sm:rounded-md sm:block">
-          Kontak
+          Contact
         </a>
       </li>
     </ul>
@@ -36,14 +36,17 @@ function Navbar() {
   };
 
   return (
-    <nav className={`bg-white ${open && "sm:pb-1"} z-20 w-full sticky top-0`}>
-      <div className=" max-w-screen-xl mx-auto flex justify-between items-center py-6 sm:py-4 sm:px-7 ">
+    <nav
+      className={`bg-white ${
+        open && "sm:pb-1 "
+      } z-20 w-full sticky top-0 drop-shadow-md `}>
+      <div className="flex justify-between items-center py-6 sm:py-4 sm:px-7 md:px-12 px-24">
         <a href="#">
-          <img src={Logo} alt="Logo Kalla" className=" w-20 md:w-36" />
+          <img src={Logo} alt="Logo Kalla" className=" sm:w-20 md:w-28 w-36" />
         </a>
         <button
           type="button"
-          className="inline-flex justify-center items-center p-1 md:hidden transition"
+          className="inline-flex justify-center items-center p-1 md:hidden lg:hidden xl:hidden transition"
           onClick={handleClick}>
           {open ? (
             <svg
@@ -77,12 +80,12 @@ function Navbar() {
             </svg>
           )}
         </button>
-        <div className=" hidden md:flex">
+        <div className=" hidden md:flex lg:flex xl:flex">
           <NavLinks />
         </div>
       </div>
       {open && (
-        <div className=" transition flex justify-center border-2 border-gray-400 mx-7 my-2 p-3 rounded-lg md:hidden">
+        <div className=" transition flex justify-center border-2 border-gray-400 mx-7 my-2 p-3 rounded-lg md:hidden lg:hidden xl:hidden">
           <NavLinks />
         </div>
       )}

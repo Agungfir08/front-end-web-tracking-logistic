@@ -7,16 +7,10 @@ import OTP from "./OTP";
 
 function OrderDetails() {
   return (
-    <div className="max-w-screen-xl mx-auto flex flex-wrap justify-between items-center sm:justify-center bg-gray-100 gap-4 rounded-xl p-6 sm:mx-7">
+    <div className=" mx-24 md:mx-12 sm:mx-7 flex flex-wrap xl:flex-nowrap bg-gray-100 sm:flex-col md:flex-col justify-center items-center xl:justify-between gap-4 rounded-2xl p-7">
       <Order />
       <Tracking />
       <Shipment />
-      {/* <div className="flex justify-center sm:items-center">
-        <div className="sm:flex-wrap flex blur-lg justify-center">
-        test
-        </div>
-        <OTP />
-  </div> */}
     </div>
   );
 }

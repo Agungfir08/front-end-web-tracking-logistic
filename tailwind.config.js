@@ -9,13 +9,13 @@ export default withMT({
   theme: {
     extend: {},
     screens: {
-      sm: { min: "320px", max: "768px" },
+      sm: { min: "320px", max: "767px" },
       // => @media (min-width: 320px) { ... }
 
-      md: "768px",
+      md: { min: "768px", max: "1023px" },
       // => @media (min-width: 768px) { ... }
 
-      lg: "1024px",
+      lg: { min: "1024px", max: "1279px" },
       // => @media (min-width: 1024px) { ... }
 
       xl: "1280px",
