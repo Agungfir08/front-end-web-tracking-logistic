@@ -1,15 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import { useFormik } from "formik";
+import { api } from "../lib/api";
+import { useQuery } from "@tanstack/react-query";
 
-function TrackOrder({ onSubmit }) {
+function TrackOrder() {
   const orderRef = useRef("");
 
   const formik = useFormik({
     initialValues: {
       numberDO: "",
     },
-    onSubmit: (values) => {
-      onSubmit();
+    onSubmit: async () => {
+      refetch();
+      console.log(data);
     },
   });
 
@@ -26,15 +29,27 @@ function TrackOrder({ onSubmit }) {
     orderRef.current.focus();
   };
 
+  const { data, refetch, isLoading } = useQuery({
+    queryKey: ["orderDetails", formik.values.numberDO],
+    queryFn: async () => {
+      const { data } = await api.get(
+        `/tracking-logistic/${formik.values.numberDO}`
+      );
+
+      return data;
+    },
+    enabled: false,
+  });
+
   useEffect(() => {
-    console.log(formik.values.numberDO);
-  }, [formik.values.numberDO]);
+    console.log(data);
+  }, [data]);
 
   return (
     <div className=" mt-2.5">
       <div className="flex flex-col items-center gap-5 sm:px-7 md:px-12">
         <h1 className=" font-bold text-2xl sm:text-lg">Cek Delivery Order</h1>
-        <form className="sm:w-full md:w-full">
+        <form className="sm:w-full md:w-full" onSubmit={formik.handleSubmit}>
           <div className="flex justify-center">
             <div className="relative sm:w-full md:w-full">
               <input
@@ -70,7 +85,8 @@ function TrackOrder({ onSubmit }) {
             </div>
             <button
               type="submit"
-              className="bg-[--maincolor] text-white px-8 sm:px-6 rounded-e-md">
+              className="bg-[--maincolor] text-white px-8 sm:px-6 rounded-e-md disabled:bg-[--maincolor]"
+              disabled={!isLoading}>
               Lacak
             </button>
           </div>

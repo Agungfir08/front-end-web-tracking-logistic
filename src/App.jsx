@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
 import TrackOrder from "./components/TrackOrder";
 import OrderDetails from "./components/details/OrderDetails";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   const [showOrderDetails, setShowOrderDetails] = useState(false);
@@ -13,6 +15,7 @@ function App() {
     console.log("track order submit");
   };
 
+  const queryClient = new QueryClient();
   // useEffect(() => {
   //   if (orderDetailsRef.current) {
   //     orderDetailsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -20,16 +23,15 @@ function App() {
   // }, [orderDetailsRef]);
 
   return (
-    <div className="w-screen h-full bg-white mb-3">
-      <Navbar />
-      <Jumbotron />
-      <TrackOrder onSubmit={handleTrackOrderSubmit} />
-      {showOrderDetails && (
-        <div ref={orderDetailsRef}>
-          <OrderDetails />
-        </div>
-      )}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="w-screen h-full bg-white mb-3">
+        <Navbar />
+        <Jumbotron />
+        <TrackOrder />
+        <OrderDetails />
+      </div>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
