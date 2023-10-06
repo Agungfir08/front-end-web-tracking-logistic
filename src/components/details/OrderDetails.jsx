@@ -3,25 +3,12 @@ import Order from "./Order";
 import Tracking from "./Tracking";
 import Shipment from "./Shipment";
 
-import OTP from "./OTP";
-import { ForgetCode } from "./ForgetCode";
-
-function OrderDetails(props) {
+function OrderDetails() {
   return (
-    <div className="max-w-screen-xl mx-auto flex flex-wrap justify-between items-center sm:justify-center bg-gray-100 gap-4 rounded-xl p-6 sm:mx-7">
+    <div className=" mx-24 md:mx-12 sm:mx-7 flex flex-wrap xl:flex-nowrap lg:flex-nowrap bg-gray-100 sm:flex-col md:flex-col lg:flex-col justify-center items-center xl:justify-between gap-4 rounded-2xl p-7">
       <Order />
-      {/* <Tracking />
-      <Shipment /> */}
-
-      <div className="flex justify-center sm:items-center">
-        <div className="sm:flex-wrap flex blur-lg justify-center">
-          <Tracking />
-          <Shipment />
-        </div>
-        {/* {props.children} */}
-        
-        <ForgetCode/>
-      </div>
+      <Tracking />
+      <Shipment />
     </div>
   );
 }

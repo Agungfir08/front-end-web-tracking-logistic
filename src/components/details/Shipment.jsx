@@ -27,7 +27,7 @@ function Shipment() {
   return (
     <div className="flex flex-col gap-1">
       <h1 className=" font-semibold">Order details</h1>
-      <div className="bg-white rounded-lg p-6 flex flex-col justify-between w-[320px] h-[440px] md:w-[400px] md:h-[500px]">
+      <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[320px] sm:h-[440px] w-[375px] h-[475px]">
         <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
           GWDBGG2023030033
         </h1>
