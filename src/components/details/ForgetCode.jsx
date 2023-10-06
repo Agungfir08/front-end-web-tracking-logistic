@@ -7,8 +7,11 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import FAQ from "../../assets/FAQ.png";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function ForgetCode() {
+  let navigate = useNavigate();
   const [open, setOpen] = React.useState(true);
 
   const handleOpen = () => setOpen(!open);
@@ -25,6 +28,7 @@ export function ForgetCode() {
         Masukkan
       </Button>
       <Dialog
+        onClose={navigate("/")}
         className="rounded-2xl"
         open={open}
         handler={handleOpen}

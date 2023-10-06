@@ -9,10 +9,7 @@ import {
   Card,
   CardBody,
 } from "@material-tailwind/react";
-import { ForgetCode } from "./ForgetCode";
-import Tes2 from "./Tes2"
-import { useNavigate, Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 let currentOTPIndex = 0
 
@@ -89,7 +86,7 @@ const OTP = () => {
           <Button fullWidth  className="w-[150px] bg-[--maincolor]" onClick={handleOpen}>
             <span>Lacak</span>
           </Button>
-          <p>lupa akses kode anda?<Link to={'/forget'} className="text-blue-700 underline"> Klik disini</Link></p>
+          <p>lupa akses kode anda?<Link to={"/forget"} className="text-blue-700 underline"> Klik disini</Link></p>
           </div>
         </DialogFooter>
       </Dialog>
