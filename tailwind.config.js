@@ -7,7 +7,14 @@ export default withMT({
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        13: "3.25rem",
+      },
+      width: {
+        13: "3.25rem",
+      },
+    },
     screens: {
       sm: { min: "320px", max: "767px" },
       // => @media (min-width: 320px) { ... }
