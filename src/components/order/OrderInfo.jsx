@@ -9,7 +9,7 @@ function OrderInfo() {
   const orderDetail = queryClient.getQueryData(["OrderInfo", order]);
 
   return (
-    <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[320px] sm:h-[400px] w-[375px] h-[440px]">
+    <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <h1 className="  sm:text-base text-lg text-[--maincolor] font-semibold">
         {orderDetail.OrderNo}
       </h1>

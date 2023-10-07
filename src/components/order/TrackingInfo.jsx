@@ -11,10 +11,10 @@ import {
 
 function TrackingInfo() {
   return (
-    <div className="bg-white rounded-lg px-8 py-6 flex flex-col justify-between sm:w-[320px] sm:h-[400px] w-[375px] h-[440px]">
+    <div className="bg-white rounded-lg px-8 py-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <div className="mt-6">
         <Stepper
-          activeStep={0}
+          activeStep={2}
           lineClassName="bg-gray-500 h-2"
           activeLineClassName="bg-[--maincolor]">
           <Step
@@ -34,7 +34,7 @@ function TrackingInfo() {
                 d="M16 4h3a2 2 0 0 1 2 2v1m-5 13h3a2 2 0 0 0 2-2v-1M4.425 19.428l6 1.8A2 2 0 0 0 13 19.312V4.688a2 2 0 0 0-2.575-1.916l-6 1.8A2 2 0 0 0 3 6.488v11.024a2 2 0 0 0 1.425 1.916zM9.001 12H9m12 0h-5m0 0l2-2m-2 2l2 2"
               />
             </svg>
-            <div className="absolute -bottom-[2.3rem] w-max text-center text-base font-medium sm:text-sm">
+            <div className="absolute -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs ">
               <h6>Entry</h6>
             </div>
           </Step>
@@ -51,7 +51,7 @@ function TrackingInfo() {
                 d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2Zm0 26a12 12 0 0 1 0-24v12l8.481 8.481A11.963 11.963 0 0 1 16 28Z"
               />
             </svg>
-            <div className="absolute -bottom-[2.3rem] w-max text-center text-base font-medium sm:text-sm">
+            <div className="absolute -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs">
               <h6>Matching</h6>
             </div>
           </Step>
@@ -68,7 +68,7 @@ function TrackingInfo() {
                 d="M17.5 6.75h-2V6c0-.96-.79-1.75-1.75-1.75H4.5c-.96 0-1.75.79-1.75 1.75v9c0 .96.79 1.75 1.75 1.75h.28c.13 1.67 1.52 3 3.22 3s3.09-1.33 3.22-3h1.55c.13 1.67 1.52 3 3.22 3s3.09-1.33 3.22-3h.28c.96 0 1.75-.79 1.75-1.75v-4.5c0-2.07-1.68-3.75-3.75-3.75ZM4.25 15V6c0-.14.11-.25.25-.25h9.25c.14 0 .25.11.25.25v7.94s-.05.06-.08.08c-.15.13-.29.27-.42.42c-.04.05-.08.09-.11.14a2.9 2.9 0 0 0-.38.66h-2v-.01a2.91 2.91 0 0 0-.27-.49c-.03-.04-.06-.08-.09-.13c-.08-.12-.17-.22-.27-.33c-.04-.04-.07-.08-.11-.12c-.13-.12-.26-.23-.4-.33c-.02-.01-.03-.03-.05-.04c-.15-.1-.31-.18-.47-.26c-.06-.03-.12-.05-.18-.07c-.13-.05-.25-.09-.38-.12c-.06-.01-.12-.03-.18-.04a2.88 2.88 0 0 0-1.18 0c-.06.01-.12.03-.18.04c-.13.03-.26.07-.38.12c-.06.02-.12.04-.18.07c-.16.07-.32.16-.47.26c-.02.01-.03.02-.05.04c-.14.1-.28.21-.4.33c-.04.04-.08.08-.11.12c-.1.1-.19.21-.27.33c-.03.04-.06.08-.09.13c-.1.16-.19.32-.27.49v.01h-.5c-.14 0-.25-.11-.25-.25ZM8 18.25c-.96 0-1.75-.79-1.75-1.75a1.69 1.69 0 0 1 .24-.85c.01-.03.03-.05.04-.08c.09-.14.2-.27.33-.38c.03-.02.05-.04.08-.06c.13-.1.28-.19.44-.25c.02 0 .05-.02.08-.02c.17-.06.36-.1.55-.1s.37.04.55.1c.03 0 .05.01.08.02c.16.06.31.15.44.25c.03.02.05.04.08.06c.13.11.24.24.33.38c.02.02.03.05.04.08c.09.16.16.32.2.5c.02.11.04.23.04.35c0 .96-.79 1.75-1.75 1.75Zm8 0c-.96 0-1.75-.79-1.75-1.75c0-.12.01-.24.04-.35c.03-.12.06-.24.11-.35v-.02c.05-.1.1-.2.17-.29c.01-.02.03-.03.04-.05a2 2 0 0 1 .19-.22c.02-.02.04-.03.06-.05c.07-.06.15-.12.23-.17c.02-.01.05-.03.08-.04c.09-.05.19-.09.29-.12c.04-.01.08-.03.13-.04c.13-.03.27-.05.41-.05c.19 0 .37.04.55.1c.03 0 .05.01.08.02c.16.06.31.15.44.25c.03.02.05.04.08.06c.13.11.24.24.33.38c.02.02.03.05.04.08c.09.16.16.32.2.5c.02.11.04.23.04.35c0 .96-.79 1.75-1.75 1.75Zm-.5-7v-3h2c1.24 0 2.25 1.01 2.25 2.25v.75H15.5Z"
               />
             </svg>
-            <div className="absolute -bottom-[2.3rem] w-max text-center text-base font-medium sm:text-sm">
+            <div className="absolute -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs">
               <h6>Delivery</h6>
             </div>
           </Step>
@@ -78,7 +78,7 @@ function TrackingInfo() {
             completedClassName="outline-[--maincolor] bg-gray-100 text-[--maincolor]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 sm:w-5 sm:h-5"
+              className="w-7 h-7 sm:w-5 sm:h-5"
               viewBox="0 0 100 100">
               <path
                 fill="currentColor"
@@ -90,7 +90,7 @@ function TrackingInfo() {
                 color="currentColor"
               />
             </svg>
-            <div className="absolute -bottom-[2.3rem] w-max text-center text-base font-medium sm:text-sm">
+            <div className="absolute -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs">
               <h6>Received</h6>
             </div>
           </Step>

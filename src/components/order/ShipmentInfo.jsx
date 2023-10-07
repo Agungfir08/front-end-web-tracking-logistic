@@ -25,7 +25,7 @@ const data = [
 
 function ShipmentInfo() {
   return (
-    <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[320px] sm:h-[400px] w-[375px] h-[440px]">
+    <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
         GWDBGG2023030033
       </h1>
