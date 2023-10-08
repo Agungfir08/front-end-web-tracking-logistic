@@ -6,10 +6,10 @@ const OTP = () => {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <div className="font-semibold rounded-lg flex flex-col items-center absolute max-w-xs">
-      <p className="text-center">
+    <div className=" flex flex-col max-w-[275px] xl:max-w-xs sm:max-w-[225px] items-center">
+      <h3 className="text-center font-semibold">
         Masukkan Kode Akses Anda Untuk Melihat Detail Tracking
-      </p>
+      </h3>
       <button
         onClick={handleOpen}
         className="mt-2 bg-[--maincolor] w-[150px] h-[45px] text-white px-4 py-2 rounded-md font-normal">

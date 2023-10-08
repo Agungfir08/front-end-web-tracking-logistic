@@ -1,5 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import React from "react";
+import { useMutation } from "@tanstack/react-query";
 import { api } from "../lib/api";
 
 export default function useFetchOrder({ onSuccess }) {

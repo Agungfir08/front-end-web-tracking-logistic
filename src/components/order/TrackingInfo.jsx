@@ -16,7 +16,8 @@ function TrackingInfo() {
         <Stepper
           activeStep={2}
           lineClassName="bg-gray-500 h-2"
-          activeLineClassName="bg-[--maincolor]">
+          activeLineClassName="bg-[--maincolor]"
+          className=" z-0">
           <Step
             className="w-13 h-13 sm:w-10 sm:h-10 bg-gray-100 outline outline-3 outline-gray-500 text-gray-500"
             activeClassName="outline-[--maincolor] bg-gray-100 text-[--maincolor]"
@@ -96,7 +97,7 @@ function TrackingInfo() {
           </Step>
         </Stepper>
       </div>
-      <div className="">
+      <div className="z-0">
         <Timeline>
           <TimelineItem className=" h-16">
             <TimelineConnector />

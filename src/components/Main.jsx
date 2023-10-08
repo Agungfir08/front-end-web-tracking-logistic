@@ -26,7 +26,7 @@ function Main() {
         <TrackOrder />
       </div>
       {order && (
-        <div className="flex md:justify-center lg:justify-center">
+        <div className="flex justify-center">
           <OrderDetails />
         </div>
       )}

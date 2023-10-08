@@ -6,7 +6,8 @@ const Context = ({ children }) => {
   const [order, setOrder] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   return (
-    <OrderContext.Provider value={{ order, setOrder }}>
+    <OrderContext.Provider
+      value={{ order, setOrder, authenticated, setAuthenticated }}>
       {children}
     </OrderContext.Provider>
   );

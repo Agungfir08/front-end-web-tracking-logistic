@@ -40,7 +40,7 @@ function Navbar() {
       className={`bg-white ${
         open && "sm:pb-1 "
       } z-20 w-full sticky top-0 drop-shadow-md `}>
-      <div className="flex justify-between items-center py-6 sm:py-4 sm:px-7 md:px-12 px-24">
+      <div className="flex md:container lg:container xl:container mx-auto justify-between items-center py-6 sm:py-4 sm:px-7">
         <a href="#">
           <img src={Logo} alt="Logo Kalla" className=" sm:w-20 md:w-28 w-36" />
         </a>
