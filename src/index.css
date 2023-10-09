@@ -6,11 +6,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: poppins, sans-serif;
+  font-family: "poppins";
 }
 
 :root {
   --maincolor: #01803d;
+  --mainfont: "poppins";
 }
 
 body::-webkit-scrollbar {
