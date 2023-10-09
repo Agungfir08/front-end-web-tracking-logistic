@@ -3,10 +3,9 @@ import { useFormik } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../context/Context";
 import { inputRegex } from "../utils/InputFormat";
-import useFetchOrder from "../hooks/useFetchOrder";
-
+import FetchOrder from "../hooks/FetchOrder";
 function TrackOrder() {
-  const { setOrder } = useContext(OrderContext);
+  const { setOrder, setAuthenticated } = useContext(OrderContext);
   const orderRef = useRef("");
   const queryClient = useQueryClient();
 
@@ -32,13 +31,17 @@ function TrackOrder() {
     orderRef.current.focus();
   };
 
-  const { mutate: fetchOrderDetail } = useFetchOrder({
+  const { mutate: fetchOrderDetail } = FetchOrder({
     onSuccess: (data) => {
       queryClient.setQueryData(
         ["OrderInfo", data.data.data.OrderNo],
-        data.data.data
+        data.data
       );
       setOrder(data.data.data.OrderNo);
+      setAuthenticated(false);
+    },
+    onError: () => {
+      alert("No number DO");
     },
   });
 

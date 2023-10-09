@@ -11,19 +11,25 @@ function OrderInfo() {
   return (
     <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <h1 className="  sm:text-base text-lg text-[--maincolor] font-semibold">
-        {orderDetail.OrderNo}
+        {order}
       </h1>
       <div className=" flex flex-col gap-4">
-        <OrderInfoItem name="customer id" value={orderDetail.customerId} />
-        <OrderInfoItem name="customer name" value={orderDetail.customerName} />
+        <OrderInfoItem name="customer id" value={orderDetail.data.customerId} />
+        <OrderInfoItem
+          name="customer name"
+          value={orderDetail.data.customerName}
+        />
         <OrderInfoItem
           name="customer address"
-          value={orderDetail.customerAddress}
+          value={orderDetail.data.customerAddress}
         />
-        <OrderInfoItem name="receiver name" value={orderDetail.receiverName} />
+        <OrderInfoItem
+          name="receiver name"
+          value={orderDetail.data.receiverName}
+        />
         <OrderInfoItem
           name="receiver address"
-          value={orderDetail.receiverAddress}
+          value={orderDetail.data.receiverAddress}
         />
       </div>
     </div>
