@@ -40,6 +40,12 @@ export default withMT({
         18: "4.5rem",
         19: "4.75rem",
       },
+      gap: {
+        13: "3.25rem",
+        17: "4.25rem",
+        18: "4.5rem",
+        19: "4.75rem",
+      },
     },
     screens: {
       sm: { min: "320px", max: "767px" },
