@@ -84,7 +84,8 @@ export default function InputAccessCode({ open, handleOpen }) {
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0.9, y: 0 },
         }}
-        className="space-y-6 p-6 xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[45%] lg:!min-w-[45%] md:!max-w-[50%] md:!min-w-[50%]">
+        className="space-y-6 p-6 xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[45%] lg:!min-w-[45%] md:!max-w-[50%] md:!min-w-[50%]"
+      >
         <DialogHeader className="justify-center !text-center !font-poppins !font-bold !text-2xl !p-0">
           Masukkan Kode Akses
         </DialogHeader>
@@ -108,7 +109,8 @@ export default function InputAccessCode({ open, handleOpen }) {
           <div className="flex flex-col items-center gap-1">
             <button
               className="w-[150px] bg-[--maincolor] rounded-md text-white py-1.5 font-semibold"
-              onClick={handleSubmit}>
+              onClick={handleSubmit}
+            >
               Lacak
             </button>
             <div className=" mt-1">
@@ -117,7 +119,8 @@ export default function InputAccessCode({ open, handleOpen }) {
                 <a
                   href="javascript:void(0)"
                   className="text-blue-700 hover:underline hover:underline-offset-2 font-medium transition"
-                  onClick={handleOpenForgetCode}>
+                  onClick={handleOpenForgetCode}
+                >
                   Klik disini
                 </a>
               </p>
