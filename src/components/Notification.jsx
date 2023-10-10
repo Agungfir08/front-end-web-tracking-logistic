@@ -9,7 +9,7 @@ export default function Notification() {
     if (notification) {
       setTimeout(() => {
         clear();
-      }, 3000);
+      }, 3500);
     }
   }, [notification, clear]);
 
@@ -21,11 +21,11 @@ export default function Notification() {
     <>
       {notification !== null && (
         <div
-          className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-black w-80 sm:min-w-[240px] sm:max-w-[260px] py-2 px-4  rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}
+          className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-black w-fit py-3 sm:py-2.5 px-8 rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}
           style={{ zIndex: 10000 }}>
           {notification === "success" ? (
             <svg
-              className="w-7 h-7 sm:w-6 sm:h-6"
+              className="w-6 h-6 sm:w-5 sm:h-5"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 48 48">
               <mask id="ipSCheckOne0">
@@ -50,7 +50,7 @@ export default function Notification() {
             </svg>
           ) : (
             <svg
-              className="w-7 h-7 sm:w-6 sm:h-6"
+              className="w-6 h-6 sm:w-5 sm:h-5"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               fill="none">
@@ -60,7 +60,9 @@ export default function Notification() {
               />
             </svg>
           )}
-          <p className=" text-base sm:text-sm">{notificationText}</p>
+          <p className=" text-lg sm:text-sm sm:whitespace-nowrap">
+            {notificationText}
+          </p>
         </div>
       )}
     </>

@@ -13,14 +13,16 @@ function NavLinks() {
       </li>
       <li>
         <a
-          href="#"
+          href="https://kallatranslog.co.id/tentang_kami"
+          target="_blank"
           className="text-gray-900 cursor-pointer transition hover:text-[--maincolor] sm:hover:text-white sm:hover:bg-[--maincolor] sm:rounded-md sm:block sm:py-[5px]">
           About Us
         </a>
       </li>
       <li>
         <a
-          href="#"
+          href="https://kallatranslog.co.id/kontak_kami"
+          target="_blank"
           className="text-[--maincolor] cursor-pointer px-10 py-2 border-[3px] border-[--maincolor] rounded-xl transition hover:text-white hover:bg-[--maincolor] sm:border-none sm:py-[5px] sm:text-gray-900 sm:rounded-md sm:block">
           Contact
         </a>

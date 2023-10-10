@@ -17,7 +17,8 @@ function SearchOrder() {
     },
     onSubmit: () => {
       const { numberDO } = formik.values;
-      fetchOrderDetail(numberDO);
+      if (!numberDO) notificationContext.error("Nomor DO anda kosong!!!");
+      else fetchOrderDetail(numberDO);
     },
   });
 
