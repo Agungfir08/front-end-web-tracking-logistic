@@ -1,22 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
+import { NotificationContext } from "../context/NotificationContext";
 
-export default function Notification({ type, message }) {
-  const [show, setShow] = useState(true);
+export default function Notification() {
+  const { notificationText, notification, clear } =
+    useContext(NotificationContext);
+
+  const clearNotification = useCallback(() => {
+    if (notification) {
+      setTimeout(() => {
+        clear();
+      }, 3500);
+    }
+  }, [notification, clear]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, 3500);
-
-    return () => clearTimeout(timer);
-  }, []);
+    clearNotification();
+  }, [clearNotification]);
 
   return (
     <>
-      {show && (
+      {notification !== null && (
         <div
-          className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 bg-white border border-black w-80 sm:w-60 py-2 rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}>
-          {type === "success" ? (
+          className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-black min-w-80 max-w-fit sm:min-w-60 py-2 px-4  rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}
+          style={{ zIndex: 10000 }}>
+          {notification === "success" ? (
             <svg
               className="w-7 h-7 sm:w-6 sm:h-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +60,7 @@ export default function Notification({ type, message }) {
               />
             </svg>
           )}
-          <p>{message}</p>
+          <p>{notificationText}</p>
         </div>
       )}
     </>

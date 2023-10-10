@@ -17,43 +17,43 @@ function ShipmentInfo() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-rows gap-24">
             <div>
-              <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
+              <h1 className=" text-lg sm:text-base text-[--maincolor] font-semibold">
                 {data.Shipment_Info.Services}
               </h1>
-              <p className=" text-lg sm:text-sm text-gray-900 font-semibold">
+              <p className=" text-base sm:text-sm text-gray-900 font-semibold">
                 services
               </p>
             </div>
             <div>
-              <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
+              <h1 className=" text-lg sm:text-base text-[--maincolor] font-semibold">
                 {data.Shipment_Info.Via}
               </h1>
-              <p className=" text-lg sm:text-sm text-gray-900 font-semibold">
+              <p className=" text-base sm:text-sm text-gray-900 font-semibold">
                 via
               </p>
             </div>
           </div>
           <div className="">
-            <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
+            <h1 className=" text-lg sm:text-base text-[--maincolor] font-semibold">
               {data.Shipment_Info.TypeOfHandling}
             </h1>
-            <p className=" text-lg sm:text-sm text-gray-900 font-semibold">
+            <p className=" text-base sm:text-sm text-gray-900 font-semibold">
               type of handling
             </p>
           </div>
           <div className="">
-            <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
+            <h1 className=" text-lg sm:text-base text-[--maincolor] font-semibold">
               {data.Shipment_Info.TypeOfRate}
             </h1>
-            <p className=" text-lg sm:text-sm text-gray-900 font-semibold">
+            <p className=" text-base sm:text-sm text-gray-900 font-semibold">
               type of rate
             </p>
           </div>
           <div className="">
-            <h1 className=" text-xl sm:text-base text-[--maincolor] font-semibold">
+            <h1 className=" text-lg sm:text-base text-[--maincolor] font-semibold">
               {data.Shipment_Info.OriginDestination}
             </h1>
-            <p className=" text-lg sm:text-sm text-gray-900 font-semibold">
+            <p className=" text-base sm:text-sm text-gray-900 font-semibold">
               origin destination
             </p>
           </div>

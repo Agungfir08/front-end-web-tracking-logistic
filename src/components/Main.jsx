@@ -19,8 +19,7 @@ function Main() {
   }, [order]);
   return (
     <div className="w-screen bg-white mb-3">
-      <Notification type={"success"} message={"Kode anda berhasil dilacak"} />
-
+      <Notification />
       <Navbar />
       <Jumbotron />
       <div

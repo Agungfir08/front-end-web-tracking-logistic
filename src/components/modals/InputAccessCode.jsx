@@ -3,17 +3,17 @@ import { Dialog, DialogHeader, DialogFooter } from "@material-tailwind/react";
 import { inputRegex } from "../../utils/InputFormat";
 import PostTrackShip from "../../hooks/PostTrackShip";
 import InputForgetCode from "./InputForgetCode";
-import Notification from "../Notification";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../../context/Context";
-import { is } from "date-fns/locale";
+import { NotificationContext } from "../../context/NotificationContext";
 
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
   const inputRef = useRef(null);
-  const [openForgetCode, setOpenForgetCode] = useState(false);
   const queryClient = useQueryClient();
+  const [openForgetCode, setOpenForgetCode] = useState(false);
   const { order, setAuthenticated } = useContext(OrderContext);
+  const notificationContext = useContext(NotificationContext);
 
   const [otp, setOtp] = useState(new Array(4).fill(""));
   const [activeOTPIndex, setActiveOTPIndex] = useState(0);
@@ -40,15 +40,17 @@ export default function InputAccessCode({ open, handleOpen }) {
     if (keys === "Backspace") setActiveOTPIndex(currentOTPIndex - 1);
   };
 
-  const { mutate: fetchTrackShip, isError } = PostTrackShip({
+  const { mutate: fetchTrackShip } = PostTrackShip({
     onSuccess: (data) => {
       queryClient.setQueryData(["TrackShipInfo", order], data.data);
       setAuthenticated(true);
+      notificationContext.success(data.data.message);
       handleOpen();
     },
-    onError: () => {
+    onError: (data) => {
       setOtp(Array(4).fill(""));
       setActiveOTPIndex(0);
+      notificationContext.error(data.response.data.message);
     },
   });
 
@@ -57,7 +59,6 @@ export default function InputAccessCode({ open, handleOpen }) {
     const otpString = otp.join("").toUpperCase();
     fetchTrackShip({ OrderNo: order, Access: otpString });
   };
-  console.log("error: ", isError);
   useEffect(() => {
     if (!open) {
       setOtp(Array(4).fill(""));
@@ -84,8 +85,7 @@ export default function InputAccessCode({ open, handleOpen }) {
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0.9, y: 0 },
         }}
-        className="space-y-6 p-6 xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[45%] lg:!min-w-[45%] md:!max-w-[50%] md:!min-w-[50%]"
-      >
+        className="space-y-6 p-6 xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[45%] lg:!min-w-[45%] md:!max-w-[50%] md:!min-w-[50%]">
         <DialogHeader className="justify-center !text-center !font-poppins !font-bold !text-2xl !p-0">
           Masukkan Kode Akses
         </DialogHeader>
@@ -109,8 +109,7 @@ export default function InputAccessCode({ open, handleOpen }) {
           <div className="flex flex-col items-center gap-1">
             <button
               className="w-[150px] bg-[--maincolor] rounded-md text-white py-1.5 font-semibold"
-              onClick={handleSubmit}
-            >
+              onClick={handleSubmit}>
               Lacak
             </button>
             <div className=" mt-1">
@@ -119,8 +118,7 @@ export default function InputAccessCode({ open, handleOpen }) {
                 <a
                   href="javascript:void(0)"
                   className="text-blue-700 hover:underline hover:underline-offset-2 font-medium transition"
-                  onClick={handleOpenForgetCode}
-                >
+                  onClick={handleOpenForgetCode}>
                   Klik disini
                 </a>
               </p>
