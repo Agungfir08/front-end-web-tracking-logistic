@@ -8,7 +8,7 @@ import {
   TimelineIcon,
   TimelineBody,
 } from "@material-tailwind/react";
-import { OrderContext } from "../../context/Context";
+import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
 
 function TrackingInfo() {

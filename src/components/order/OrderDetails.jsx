@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import OrderInfo from "./OrderInfo";
 import TrackingInfo from "./TrackingInfo";
 import ShipmentInfo from "./ShipmentInfo";
-import OTP from "./OTP";
-import { OrderContext } from "../../context/Context";
+import AccessCode from "../AccessCode";
+import { OrderContext } from "../../context/OrderContext";
 
 function OrderDetails() {
   const { authenticated } = useContext(OrderContext);
@@ -35,7 +35,7 @@ function OrderDetails() {
             <ShipmentInfo />
           </div>
           <div className=" absolute backdrop-blur-xl bg-black/5 flex justify-center items-center w-full sm:h-[97.3%] md:h-[97.5%] lg:h-[97.5%] xl:h-[95%] rounded-lg">
-            <OTP />
+            <AccessCode />
           </div>
         </div>
       )}

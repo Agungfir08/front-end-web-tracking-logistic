@@ -49,23 +49,27 @@ export default withMT({
       keyframes: {
         fadeIn: {
           "0%": {
-            top: "-25%",
+            opacity: 0,
+            top: "-10%",
           },
           "100%": {
+            opacity: 1,
             top: "5%",
           },
         },
         fadeOut: {
           "0%": {
+            opacity: 1,
             top: "5%",
           },
           "100%": {
-            top: "-25%",
+            opacity: 0,
+            top: "-10%",
           },
         },
       },
       animation: {
-        notifAnimation: "fadeIn 1s ease-in-out, fadeOut 1s ease-in-out 3s",
+        notifAnimation: "fadeIn 0.8s ease-in-out, fadeOut 0.8s ease-in-out 3s",
       },
     },
     screens: {

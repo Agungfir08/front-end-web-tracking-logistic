@@ -9,7 +9,7 @@ export default function Notification() {
     if (notification) {
       setTimeout(() => {
         clear();
-      }, 3500);
+      }, 3000);
     }
   }, [notification, clear]);
 
@@ -21,7 +21,7 @@ export default function Notification() {
     <>
       {notification !== null && (
         <div
-          className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-black min-w-80 max-w-fit sm:min-w-60 py-2 px-4  rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}
+          className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-black w-80 sm:min-w-[240px] sm:max-w-[260px] py-2 px-4  rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}
           style={{ zIndex: 10000 }}>
           {notification === "success" ? (
             <svg
@@ -60,7 +60,7 @@ export default function Notification() {
               />
             </svg>
           )}
-          <p>{notificationText}</p>
+          <p className=" text-base sm:text-sm">{notificationText}</p>
         </div>
       )}
     </>

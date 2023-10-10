@@ -1,11 +1,13 @@
 import React, { useContext, useRef } from "react";
 import { useFormik } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
-import { OrderContext } from "../context/Context";
+import { OrderContext } from "../context/OrderContext";
 import { inputRegex } from "../utils/InputFormat";
-import FetchOrder from "../hooks/FetchOrder";
-function TrackOrder() {
-  const { setOrder, setAuthenticated } = useContext(OrderContext);
+import FetchOrder from "../features/FetchOrder";
+import { NotificationContext } from "../context/NotificationContext";
+function SearchOrder() {
+  const { setOrder, setAuthenticated, setNotFound } = useContext(OrderContext);
+  const notificationContext = useContext(NotificationContext);
   const orderRef = useRef("");
   const queryClient = useQueryClient();
 
@@ -39,9 +41,11 @@ function TrackOrder() {
       );
       setOrder(data.data.data.OrderNo);
       setAuthenticated(false);
+      setNotFound(false);
     },
-    onError: () => {
-      alert("No number DO");
+    onError: (data) => {
+      notificationContext.error(data.response.data.message);
+      setNotFound(true);
     },
   });
 
@@ -95,4 +99,4 @@ function TrackOrder() {
   );
 }
 
-export default TrackOrder;
+export default SearchOrder;

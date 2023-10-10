@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import delivery from "../../assets/delivery.png";
-import { OrderContext } from "../../context/Context";
+import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
 
 function ShipmentInfo() {

@@ -2,15 +2,23 @@ import React, { createContext, useState } from "react";
 
 export const OrderContext = createContext();
 
-const Context = ({ children }) => {
+const OrderContextProvider = ({ children }) => {
   const [order, setOrder] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   return (
     <OrderContext.Provider
-      value={{ order, setOrder, authenticated, setAuthenticated }}>
+      value={{
+        order,
+        setOrder,
+        authenticated,
+        setAuthenticated,
+        notFound,
+        setNotFound,
+      }}>
       {children}
     </OrderContext.Provider>
   );
 };
 
-export default Context;
+export default OrderContextProvider;
