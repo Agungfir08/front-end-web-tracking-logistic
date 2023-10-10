@@ -19,9 +19,8 @@ function Main() {
   }, [order]);
   return (
     <div className="w-screen bg-white mb-3">
-      {authenticated && (
-        <Notification type={"success"} message={"Kode anda berhasil dilacak"} />
-      )}
+      <Notification type={"success"} message={"Kode anda berhasil dilacak"} />
+
       <Navbar />
       <Jumbotron />
       <div
