@@ -3,10 +3,11 @@ import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
 import TrackOrder from "./TrackOrder";
 import OrderDetails from "./order/OrderDetails";
+import Notification from "./Notification";
 import { OrderContext } from "../context/Context";
 
 function Main() {
-  const { order } = useContext(OrderContext);
+  const { order, authenticated } = useContext(OrderContext);
   const orderRef = useRef(null);
 
   useEffect(() => {
@@ -18,6 +19,9 @@ function Main() {
   }, [order]);
   return (
     <div className="w-screen bg-white mb-3">
+      {authenticated && (
+        <Notification type={"success"} message={"Kode anda berhasil dilacak"} />
+      )}
       <Navbar />
       <Jumbotron />
       <div

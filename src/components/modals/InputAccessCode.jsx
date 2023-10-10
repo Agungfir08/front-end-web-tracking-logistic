@@ -3,8 +3,10 @@ import { Dialog, DialogHeader, DialogFooter } from "@material-tailwind/react";
 import { inputRegex } from "../../utils/InputFormat";
 import PostTrackShip from "../../hooks/PostTrackShip";
 import InputForgetCode from "./InputForgetCode";
+import Notification from "../Notification";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../../context/Context";
+import { is } from "date-fns/locale";
 
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
@@ -38,14 +40,13 @@ export default function InputAccessCode({ open, handleOpen }) {
     if (keys === "Backspace") setActiveOTPIndex(currentOTPIndex - 1);
   };
 
-  const { mutate: fetchTrackShip } = PostTrackShip({
+  const { mutate: fetchTrackShip, isError } = PostTrackShip({
     onSuccess: (data) => {
       queryClient.setQueryData(["TrackShipInfo", order], data.data);
       setAuthenticated(true);
       handleOpen();
     },
     onError: () => {
-      alert("Salah");
       setOtp(Array(4).fill(""));
       setActiveOTPIndex(0);
     },
@@ -56,7 +57,7 @@ export default function InputAccessCode({ open, handleOpen }) {
     const otpString = otp.join("").toUpperCase();
     fetchTrackShip({ OrderNo: order, Access: otpString });
   };
-  console.log(otp.join(""));
+  console.log("error: ", isError);
   useEffect(() => {
     if (!open) {
       setOtp(Array(4).fill(""));

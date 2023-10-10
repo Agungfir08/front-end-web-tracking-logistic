@@ -46,6 +46,27 @@ export default withMT({
         18: "4.5rem",
         19: "4.75rem",
       },
+      keyframes: {
+        fadeIn: {
+          "0%": {
+            top: "-25%",
+          },
+          "100%": {
+            top: "5%",
+          },
+        },
+        fadeOut: {
+          "0%": {
+            top: "5%",
+          },
+          "100%": {
+            top: "-25%",
+          },
+        },
+      },
+      animation: {
+        notifAnimation: "fadeIn 1s ease-in-out, fadeOut 1s ease-in-out 3s",
+      },
     },
     screens: {
       sm: { min: "320px", max: "767px" },
