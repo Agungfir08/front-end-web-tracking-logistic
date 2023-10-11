@@ -1,37 +1,36 @@
 import React, { useContext, useEffect, useRef } from "react";
 import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
-import TrackOrder from "./TrackOrder";
+import SearchOrder from "./SearchOrder";
 import OrderDetails from "./order/OrderDetails";
-import { OrderContext } from "../context/Context";
-import { ToastContainer } from 'react-toastify';
+import Notification from "./Notification";
+import NotFound from "./NotFound";
+import { OrderContext } from "../context/OrderContext";
 
 function Main() {
-  const { order } = useContext(OrderContext);
+  const { order, notFound } = useContext(OrderContext);
   const orderRef = useRef(null);
 
   useEffect(() => {
-    if (order)
+    if (notFound || order)
       orderRef.current?.scrollIntoView({
         behavior: "smooth",
         alignTop: true,
       });
-  }, [order]);
+  }, [notFound, order]);
   return (
     <div className="w-screen bg-white mb-3">
+      <Notification />
       <Navbar />
       <Jumbotron />
       <div
         ref={orderRef}
         className="sm:scroll-mt-16 md:scroll-mt-24 lg:scroll-mt-28">
-        <TrackOrder />
+        <SearchOrder />
       </div>
-      {order && (
-        <div className="flex justify-center">
-          <OrderDetails />
-        </div>
-      )}
-      <ToastContainer/>
+      <div className="flex justify-center">
+        {notFound ? <NotFound /> : order && <OrderDetails />}
+      </div>
     </div>
   );
 }

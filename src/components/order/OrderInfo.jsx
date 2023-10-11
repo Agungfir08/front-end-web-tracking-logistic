@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { OrderContext } from "../../context/Context";
+import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
 import OrderInfoItem from "./OrderInfoItem";
 
@@ -14,22 +14,25 @@ function OrderInfo() {
         {order}
       </h1>
       <div className=" flex flex-col gap-4">
-        <OrderInfoItem name="customer id" value={orderDetail.data.customerId} />
+        <OrderInfoItem
+          name="customer id"
+          value={orderDetail?.data.customerId}
+        />
         <OrderInfoItem
           name="customer name"
-          value={orderDetail.data.customerName}
+          value={orderDetail?.data.customerName}
         />
         <OrderInfoItem
           name="customer address"
-          value={orderDetail.data.customerAddress}
+          value={orderDetail?.data.customerAddress}
         />
         <OrderInfoItem
           name="receiver name"
-          value={orderDetail.data.receiverName}
+          value={orderDetail?.data.receiverName}
         />
         <OrderInfoItem
           name="receiver address"
-          value={orderDetail.data.receiverAddress}
+          value={orderDetail?.data.receiverAddress}
         />
       </div>
     </div>

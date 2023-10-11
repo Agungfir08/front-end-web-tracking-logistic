@@ -8,7 +8,7 @@ import {
   TimelineIcon,
   TimelineBody,
 } from "@material-tailwind/react";
-import { OrderContext } from "../../context/Context";
+import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
 
 function TrackingInfo() {
@@ -20,7 +20,7 @@ function TrackingInfo() {
     : null;
 
   return (
-    <div className="bg-white rounded-lg px-8 py-6 flex flex-col gap-19 sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
+    <div className="bg-white rounded-lg px-8 py-6 flex flex-col gap-19 sm:gap-17 sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <div className="mt-6">
         <Stepper
           activeStep={data?.Tracking_Status.length - 1}
@@ -45,7 +45,7 @@ function TrackingInfo() {
               />
             </svg>
             <div className="absolute z-10 -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs ">
-              <h6>Entry</h6>
+              <h6 className=" font-poppins font-normal ">Entry</h6>
             </div>
           </Step>
           <Step
@@ -62,7 +62,7 @@ function TrackingInfo() {
               />
             </svg>
             <div className="absolute z-10 -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs">
-              <h6>Matching</h6>
+              <h6 className=" font-poppins font-normal ">Matching</h6>
             </div>
           </Step>
           <Step
@@ -79,7 +79,7 @@ function TrackingInfo() {
               />
             </svg>
             <div className="absolute z-10 -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs">
-              <h6>Delivery</h6>
+              <h6 className=" font-poppins font-normal ">Delivery</h6>
             </div>
           </Step>
           <Step
@@ -101,7 +101,7 @@ function TrackingInfo() {
               />
             </svg>
             <div className="absolute -bottom-[2.3rem] sm:-bottom-[1.75rem] w-max text-center text-base font-medium sm:text-xs">
-              <h6>Received</h6>
+              <h6 className=" font-poppins font-normal ">Received</h6>
             </div>
           </Step>
         </Stepper>

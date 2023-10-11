@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import InputAccessCode from "../modals/InputAccessCode";
+import React, { useState } from "react";
+import InputAccessCode from "./modals/InputAccessCode";
 
-const OTP = () => {
+const AccessCode = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
@@ -21,4 +21,4 @@ const OTP = () => {
   );
 };
 
-export default OTP;
+export default AccessCode;
