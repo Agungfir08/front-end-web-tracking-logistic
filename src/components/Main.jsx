@@ -4,6 +4,7 @@ import Jumbotron from "./Jumbotron";
 import TrackOrder from "./TrackOrder";
 import OrderDetails from "./order/OrderDetails";
 import { OrderContext } from "../context/Context";
+import { ToastContainer } from 'react-toastify';
 
 function Main() {
   const { order } = useContext(OrderContext);
@@ -30,6 +31,7 @@ function Main() {
           <OrderDetails />
         </div>
       )}
+      <ToastContainer/>
     </div>
   );
 }

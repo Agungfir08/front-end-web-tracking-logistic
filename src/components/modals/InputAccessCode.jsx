@@ -6,8 +6,22 @@ import InputForgetCode from "./InputForgetCode";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../../context/Context";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
+  const showToast = () =>
+  toast.success('Kode akses berhasil di lacak', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
   const inputRef = useRef(null);
   const [openForgetCode, setOpenForgetCode] = useState(false);
   const queryClient = useQueryClient();
@@ -43,6 +57,7 @@ export default function InputAccessCode({ open, handleOpen }) {
       queryClient.setQueryData(["TrackShipInfo", order], data.data);
       setAuthenticated(true);
       handleOpen();
+      showToast();
     },
     onError: () => {
       alert("Salah");
