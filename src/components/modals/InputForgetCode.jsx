@@ -1,4 +1,3 @@
-import React from "react";
 import { Dialog, DialogBody } from "@material-tailwind/react";
 import FAQ from "../../assets/FAQ.png";
 
