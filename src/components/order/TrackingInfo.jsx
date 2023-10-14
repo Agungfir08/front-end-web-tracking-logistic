@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { Stepper, Step, Typography } from "@material-tailwind/react";
+import { useContext } from "react";
+import { Stepper, Step } from "@material-tailwind/react";
 import {
   Timeline,
   TimelineItem,
   TimelineConnector,
   TimelineHeader,
   TimelineIcon,
-  TimelineBody,
 } from "@material-tailwind/react";
 import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
@@ -23,7 +22,7 @@ function TrackingInfo() {
     <div className="bg-white rounded-lg px-8 py-6 flex flex-col gap-19 sm:gap-17 sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <div className="mt-6">
         <Stepper
-          activeStep={data?.Tracking_Status.length - 1}
+          activeStep={data?.Tracking.length - 1}
           lineClassName="bg-gray-500 h-2"
           activeLineClassName="bg-[--maincolor]"
           className=" z-0">
@@ -108,11 +107,9 @@ function TrackingInfo() {
       </div>
       <div className="z-0">
         <Timeline>
-          {data?.Tracking_Status.map((status, index) => (
+          {data?.Tracking.map((status, index) => (
             <TimelineItem key={index} className={index === 3 ? "h-8" : "h-16"}>
-              {index !== data?.Tracking_Status.length - 1 && (
-                <TimelineConnector />
-              )}
+              {index !== data?.Tracking.length - 1 && <TimelineConnector />}
               <TimelineHeader className="h-3">
                 <TimelineIcon
                   color={

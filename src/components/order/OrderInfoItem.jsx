@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function OrderInfoItem({ name, value }) {
   return (
     <div className="flex-col">

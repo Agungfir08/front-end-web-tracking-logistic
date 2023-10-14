@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
 import OrderInfoItem from "./OrderInfoItem";

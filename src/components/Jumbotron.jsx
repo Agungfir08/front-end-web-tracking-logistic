@@ -1,4 +1,3 @@
-import React from "react";
 import LogisticLogo from "../assets/kalla-logistic-logo.svg";
 import LogisticIllustration from "../assets/kalla-logistic-illustarion.svg";
 

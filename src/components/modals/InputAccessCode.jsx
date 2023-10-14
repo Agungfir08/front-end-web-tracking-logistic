@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { Dialog, DialogHeader, DialogFooter } from "@material-tailwind/react";
 import { inputRegex } from "../../utils/InputFormat";
 import PostTrackShip from "../../features/PostTrackShip";
@@ -54,7 +54,7 @@ export default function InputAccessCode({ open, handleOpen }) {
     if (keys === "Backspace") setActiveOTPIndex(currentOTPIndex - 1);
   };
 
-  const { mutate: fetchTrackShip } = PostTrackShip({
+  const { mutate: postTrackShip } = PostTrackShip({
     onSuccess: (data) => {
       queryClient.setQueryData(["TrackShipInfo", order], data.data);
       setAuthenticated(true);
@@ -72,7 +72,7 @@ export default function InputAccessCode({ open, handleOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const otpString = otp.join("").toUpperCase();
-    fetchTrackShip({ OrderNo: order, Access: otpString });
+    postTrackShip({ OrderNo: order, Access: otpString });
   };
   useEffect(() => {
     if (!open) {

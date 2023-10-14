@@ -1,5 +1,5 @@
 import Logo from "../assets/LogoKalla.svg";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 function NavLinks() {
   return (
