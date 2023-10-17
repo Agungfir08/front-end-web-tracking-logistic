@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useRef } from "react";
-import Navbar from "./Navbar";
-import Jumbotron from "./Jumbotron";
-import SearchOrder from "./SearchOrder";
-import OrderDetails from "./order/OrderDetails";
-import Notification from "./Notification";
-import NotFound from "./NotFound";
+import Navbar from "../components/Navbar";
+import Jumbotron from "../components/Jumbotron";
+import SearchOrder from "../components/SearchOrder";
+import OrderDetails from "../components/order/OrderDetails";
+import Notification from "../components/Notification";
+import NotFound from "../components/NotFound";
 import { OrderContext } from "../context/OrderContext";
 
 function Main() {
@@ -25,7 +25,7 @@ function Main() {
       <Jumbotron />
       <div
         ref={orderRef}
-        className="sm:scroll-mt-16 md:scroll-mt-24 lg:scroll-mt-28">
+        className="sm:scroll-mt-16 md:scroll-mt-24 lg:scroll-mt-28 scroll-mt-15 ">
         <SearchOrder />
       </div>
       <div className="flex justify-center">

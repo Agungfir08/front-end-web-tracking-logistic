@@ -1,33 +1,19 @@
-import { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useState, useContext, useReducer } from "react";
 import { Dialog, DialogHeader, DialogFooter } from "@material-tailwind/react";
 import { inputRegex } from "../../utils/InputFormat";
 import PostTrackShip from "../../features/PostTrackShip";
 import InputForgetCode from "./InputForgetCode";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../../context/OrderContext";
-import { NotificationContext } from "../../context/NotificationContext";
-
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { NotificationContext } from "../../context/NotificationReducer";
 
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
-  const showToast = () =>
-  toast.success('Kode akses berhasil di lacak', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    });
   const inputRef = useRef(null);
   const queryClient = useQueryClient();
   const [openForgetCode, setOpenForgetCode] = useState(false);
   const { order, setAuthenticated } = useContext(OrderContext);
-  const notificationContext = useContext(NotificationContext);
+  const { dispatch } = useContext(NotificationContext);
 
   const [otp, setOtp] = useState(new Array(4).fill(""));
   const [activeOTPIndex, setActiveOTPIndex] = useState(0);
@@ -58,14 +44,13 @@ export default function InputAccessCode({ open, handleOpen }) {
     onSuccess: (data) => {
       queryClient.setQueryData(["TrackShipInfo", order], data.data);
       setAuthenticated(true);
-      notificationContext.success(data.data.message);
+      dispatch({ type: "SUCCESS", message: data.data.message });
       handleOpen();
-      showToast();
     },
     onError: (data) => {
       setOtp(Array(4).fill(""));
       setActiveOTPIndex(0);
-      notificationContext.error(data.response.data.message);
+      dispatch({ type: "ERROR", message: data.response.data.message });
     },
   });
 

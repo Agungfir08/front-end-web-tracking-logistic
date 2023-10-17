@@ -4,11 +4,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../context/OrderContext";
 import { inputRegex } from "../utils/InputFormat";
 import FetchOrder from "../features/FetchOrder";
-import { NotificationContext } from "../context/NotificationContext";
-import Cross from "./icons/Cross";
+import { CROSS } from "./Icon";
+import { NotificationContext } from "../context/NotificationReducer";
 function SearchOrder() {
   const { setOrder, setAuthenticated, setNotFound } = useContext(OrderContext);
-  const notificationContext = useContext(NotificationContext);
+  const { dispatch } = useContext(NotificationContext);
   const orderRef = useRef("");
   const queryClient = useQueryClient();
 
@@ -18,7 +18,8 @@ function SearchOrder() {
     },
     onSubmit: () => {
       const { numberDO } = formik.values;
-      if (!numberDO) notificationContext.error("Nomor DO anda kosong!!!");
+      if (!numberDO)
+        dispatch({ type: "ERROR", message: "Nomor DO tidak boleh kosong" });
       else fetchOrderDetail(numberDO);
     },
   });
@@ -46,7 +47,7 @@ function SearchOrder() {
       setNotFound(false);
     },
     onError: (data) => {
-      notificationContext.error(data.response.data.message);
+      dispatch({ type: "ERROR", message: data.response.data.message });
       setNotFound(true);
     },
   });
@@ -71,20 +72,14 @@ function SearchOrder() {
               {formik.values.numberDO.length > 0 && (
                 <div
                   className="absolute right-0 inset-y-0 flex items-center mr-3"
-                  onClick={clearInput}
-                >
-                  <div
-                    style={{ height: "12px", width: "12px" }}
-                  >
-                    <Cross />
-                  </div>
+                  onClick={clearInput}>
+                  <CROSS />
                 </div>
               )}
             </div>
             <button
               type="submit"
-              className="bg-[--maincolor] text-white px-8 sm:px-5 rounded-e-md disabled:bg-[--maincolor] sm:text-sm"
-            >
+              className="bg-[--maincolor] text-white px-8 sm:px-5 rounded-e-md disabled:bg-[--maincolor] sm:text-sm">
               Lacak
             </button>
           </div>
