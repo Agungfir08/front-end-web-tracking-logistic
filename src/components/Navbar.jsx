@@ -46,10 +46,10 @@ function Navbar() {
                   href={`${key.id}`}
                   target="_blank"
                   className={`${
-                    index !== navLink.length - 1 && "text-gray-900"
+                    index !== navLink.length - 1 ? "text-gray-900" : "text-[--maincolor]"
                   } cursor-pointer transition hover:text-[--maincolor] ${
                     index === navLink.length - 1 &&
-                    "text-[--maincolor] px-10 py-2 border-[3px] border-[--maincolor] rounded-xl hover:text-white hover:bg-[--maincolor]"
+                    " px-10 py-2 border-[3px] border-[--maincolor] rounded-xl hover:text-white hover:bg-[--maincolor]"
                   }`}>
                   {key.title}
                 </a>

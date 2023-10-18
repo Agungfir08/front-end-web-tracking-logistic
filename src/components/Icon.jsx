@@ -5,13 +5,13 @@ export function SUCCESS() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48">
       <mask id="ipSCheckOne0">
-        <g fill="none" stroke-linejoin="round" stroke-width="4">
+        <g fill="none" strokeLinejoin="round" strokeWidth="4">
           <path
             fill="#fff"
             stroke="#fff"
             d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z"
           />
-          <path stroke="#000" stroke-linecap="round" d="m16 24l6 6l12-12" />
+          <path stroke="#000" strokeLinecap="round" d="m16 24l6 6l12-12" />
         </g>
       </mask>
       <path fill="#01803d" d="M0 0h48v48H0z" mask="url(#ipSCheckOne0)" />
@@ -44,9 +44,9 @@ export function BURGER() {
       viewBox="0 0 17 14">
       <path
         stroke="black"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M1 1h15M1 7h15M1 13h15"
       />
     </svg>
@@ -63,9 +63,9 @@ export function CROSS() {
       viewBox="0 0 14 14">
       <path
         stroke="black"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
       />
     </svg>
@@ -109,9 +109,9 @@ export function ENTRY() {
       <path
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M16 4h3a2 2 0 0 1 2 2v1m-5 13h3a2 2 0 0 0 2-2v-1M4.425 19.428l6 1.8A2 2 0 0 0 13 19.312V4.688a2 2 0 0 0-2.575-1.916l-6 1.8A2 2 0 0 0 3 6.488v11.024a2 2 0 0 0 1.425 1.916zM9.001 12H9m12 0h-5m0 0l2-2m-2 2l2 2"
       />
     </svg>

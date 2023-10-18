@@ -60,8 +60,10 @@ export default withMT({
       keyframes: {
         fadeIn: {
           "0%": {
-            opacity: 0,
             top: "-10%",
+          },
+          "50%": {
+            opacity: 0,
           },
           "100%": {
             opacity: 1,
@@ -73,8 +75,10 @@ export default withMT({
             opacity: 1,
             top: "5%",
           },
-          "100%": {
+          "50%": {
             opacity: 0,
+          },
+          "100%": {
             top: "-10%",
           },
         },

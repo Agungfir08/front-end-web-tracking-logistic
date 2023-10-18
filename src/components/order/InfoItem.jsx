@@ -1,4 +1,4 @@
-export default function OrderInfoItem({ name, value }) {
+export default function InfoItem({ name, value }) {
   return (
     <div className="flex-col">
       <h1 className="sm:text-base text-lg text-[--maincolor] font-semibold">

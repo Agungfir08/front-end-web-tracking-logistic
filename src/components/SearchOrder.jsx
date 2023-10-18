@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useCallback, useContext, useMemo, useRef } from "react";
 import { useFormik } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../context/OrderContext";
@@ -17,8 +17,8 @@ function SearchOrder() {
     initialValues: {
       numberDO: "",
     },
-    onSubmit: () => {
-      const { numberDO } = formik.values;
+    onSubmit: (values) => {
+      const { numberDO } = values;
       if (!numberDO)
         dispatch({
           type: actionTypes.ERROR,
@@ -28,12 +28,15 @@ function SearchOrder() {
     },
   });
 
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-    if (inputRegex.test(inputValue)) {
-      formik.handleChange(e);
-    }
-  };
+  const handleChange = useCallback(
+    (e) => {
+      const inputValue = e.target.value;
+      if (inputRegex.test(inputValue)) {
+        formik.handleChange(e);
+      }
+    },
+    [formik]
+  );
 
   const clearInput = () => {
     formik.setFieldValue("numberDO", "");
@@ -64,7 +67,7 @@ function SearchOrder() {
   });
 
   return (
-    <div className=" mt-2.5">
+    <div className=" mt-8">
       <div className="flex flex-col items-center gap-5 sm:px-7 md:px-12">
         <h1 className=" font-bold text-2xl sm:text-lg">Cek Delivery Order</h1>
         <form onSubmit={formik.handleSubmit}>
@@ -75,7 +78,7 @@ function SearchOrder() {
                 name="numberDO"
                 placeholder="DOXXXXXXXXXX"
                 autoComplete="off"
-                className=" border border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full py-1.5 pl-2 pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none sm:text-sm"
+                className=" border border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full py-1.5 pl-2.5 pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none sm:text-sm"
                 onChange={handleChange}
                 value={formik.values.numberDO}
                 ref={orderRef}

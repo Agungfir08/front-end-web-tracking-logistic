@@ -122,8 +122,7 @@ export default function InputAccessCode({ open, handleOpen }) {
                   <p className="text-black text-sm sm:text-xs">
                     lupa akses kode anda?{" "}
                     <a
-                      href="javascript:void(0)"
-                      className="text-blue-700 hover:underline hover:underline-offset-2 font-medium transition"
+                      className="text-blue-700 hover:underline hover:underline-offset-2 hover:cursor-pointer font-medium transition "
                       onClick={handleOpenForgetCode}>
                       Klik disini
                     </a>

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { OrderContext } from "../../context/OrderContext";
 import { useQueryClient } from "@tanstack/react-query";
-import OrderInfoItem from "./OrderInfoItem";
+import InfoItem from "./InfoItem";
 
 function OrderInfo() {
   const queryClient = useQueryClient();
   const { order } = useContext(OrderContext);
-  const orderDetail = queryClient.getQueryData(["OrderInfo", order.orderNo]);
+  const data = queryClient.getQueryData(["OrderInfo", order.orderNo]);
 
   return (
     <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
@@ -14,26 +14,11 @@ function OrderInfo() {
         {order.orderNo}
       </h1>
       <div className=" flex flex-col gap-4">
-        <OrderInfoItem
-          name="customer id"
-          value={orderDetail?.data.customerId}
-        />
-        <OrderInfoItem
-          name="customer name"
-          value={orderDetail?.data.customerName}
-        />
-        <OrderInfoItem
-          name="customer address"
-          value={orderDetail?.data.customerAddress}
-        />
-        <OrderInfoItem
-          name="receiver name"
-          value={orderDetail?.data.receiverName}
-        />
-        <OrderInfoItem
-          name="receiver address"
-          value={orderDetail?.data.receiverAddress}
-        />
+        <InfoItem name="customer id" value={data?.data.customerId} />
+        <InfoItem name="customer name" value={data?.data.customerName} />
+        <InfoItem name="customer address" value={data?.data.customerAddress} />
+        <InfoItem name="receiver name" value={data?.data.receiverName} />
+        <InfoItem name="receiver address" value={data?.data.receiverAddress} />
       </div>
     </div>
   );
