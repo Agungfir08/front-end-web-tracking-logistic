@@ -5,7 +5,8 @@ import { OrderContext } from "../context/OrderContext";
 import { inputRegex } from "../utils/InputFormat";
 import FetchOrder from "../features/FetchOrder";
 import { CROSS } from "./Icon";
-import { NotificationContext } from "../context/NotificationReducer";
+import { NotificationContext } from "../context/NotificationContext";
+import { actionTypes } from "../reducer/NotificationActionTypes";
 function SearchOrder() {
   const { setOrder, setAuthenticated, setNotFound } = useContext(OrderContext);
   const { dispatch } = useContext(NotificationContext);
@@ -19,7 +20,10 @@ function SearchOrder() {
     onSubmit: () => {
       const { numberDO } = formik.values;
       if (!numberDO)
-        dispatch({ type: "ERROR", message: "Nomor DO tidak boleh kosong" });
+        dispatch({
+          type: actionTypes.ERROR,
+          message: "Nomor DO tidak boleh kosong",
+        });
       else fetchOrderDetail(numberDO);
     },
   });
@@ -42,12 +46,19 @@ function SearchOrder() {
         ["OrderInfo", data.data.data.OrderNo],
         data.data
       );
-      setOrder(data.data.data.OrderNo);
+      setOrder({
+        orderNo: data.data.data.OrderNo,
+        email: data.data.data.email,
+        phone: data.data.data.phone,
+      });
       setAuthenticated(false);
       setNotFound(false);
     },
     onError: (data) => {
-      dispatch({ type: "ERROR", message: data.response.data.message });
+      dispatch({
+        type: actionTypes.ERROR,
+        message: data.response.data.message,
+      });
       setNotFound(true);
     },
   });
@@ -64,7 +75,7 @@ function SearchOrder() {
                 name="numberDO"
                 placeholder="DOXXXXXXXXXX"
                 autoComplete="off"
-                className=" border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full  pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none sm:text-sm"
+                className=" border border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full py-1.5 pl-2 pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none sm:text-sm"
                 onChange={handleChange}
                 value={formik.values.numberDO}
                 ref={orderRef}

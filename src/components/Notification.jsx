@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect } from "react";
 import { FAILED, SUCCESS } from "./Icon";
-import { NotificationContext } from "../context/NotificationReducer";
+import { NotificationContext } from "../context/NotificationContext";
+import { actionTypes } from "../reducer/NotificationActionTypes";
 
 export default function Notification() {
   const { state, dispatch } = useContext(NotificationContext);
@@ -8,7 +9,7 @@ export default function Notification() {
   const clearNotification = useCallback(() => {
     if (state.notificationType) {
       setTimeout(() => {
-        dispatch({ type: "CLEAR" });
+        dispatch({ type: actionTypes.CLEAR });
       }, 3500);
     }
   }, [state]);

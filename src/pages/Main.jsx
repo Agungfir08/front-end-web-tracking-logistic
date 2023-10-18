@@ -12,7 +12,7 @@ function Main() {
   const orderRef = useRef(null);
 
   useEffect(() => {
-    if (notFound || order)
+    if (notFound || order.orderNo)
       orderRef.current?.scrollIntoView({
         behavior: "smooth",
         alignTop: true,
@@ -29,7 +29,7 @@ function Main() {
         <SearchOrder />
       </div>
       <div className="flex justify-center">
-        {notFound ? <NotFound /> : order && <OrderDetails />}
+        {notFound ? <NotFound /> : order.orderNo && <OrderDetails />}
       </div>
     </div>
   );

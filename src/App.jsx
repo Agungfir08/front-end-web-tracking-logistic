@@ -2,7 +2,7 @@ import Main from "./pages/Main";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import OrderContextProvider from "./context/OrderContext";
-import { NotificationProvider } from "./context/NotificationReducer";
+import { NotificationProvider } from "./context/NotificationContext";
 function App() {
   const queryClient = new QueryClient();
 

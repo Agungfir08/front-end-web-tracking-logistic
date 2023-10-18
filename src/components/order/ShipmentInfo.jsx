@@ -8,9 +8,9 @@ function ShipmentInfo() {
   const queryClient = useQueryClient();
 
   const data = authenticated
-    ? queryClient.getQueryData(["TrackShipInfo", order])
+    ? queryClient.getQueryData(["TrackShipInfo", order.orderNo])
     : null;
-    
+
   return (
     <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       {data ? (

@@ -5,7 +5,8 @@ import PostTrackShip from "../../features/PostTrackShip";
 import InputForgetCode from "./InputForgetCode";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../../context/OrderContext";
-import { NotificationContext } from "../../context/NotificationReducer";
+import { NotificationContext } from "../../context/NotificationContext";
+import { actionTypes } from "../../reducer/NotificationActionTypes";
 
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
@@ -42,22 +43,25 @@ export default function InputAccessCode({ open, handleOpen }) {
 
   const { mutate: postTrackShip } = PostTrackShip({
     onSuccess: (data) => {
-      queryClient.setQueryData(["TrackShipInfo", order], data.data);
+      queryClient.setQueryData(["TrackShipInfo", order.orderNo], data.data);
       setAuthenticated(true);
-      dispatch({ type: "SUCCESS", message: data.data.message });
+      dispatch({ type: actionTypes.SUCCESS, message: data.data.message });
       handleOpen();
     },
     onError: (data) => {
       setOtp(Array(4).fill(""));
       setActiveOTPIndex(0);
-      dispatch({ type: "ERROR", message: data.response.data.message });
+      dispatch({
+        type: actionTypes.ERROR,
+        message: data.response.data.message,
+      });
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const otpString = otp.join("").toUpperCase();
-    postTrackShip({ OrderNo: order, Access: otpString });
+    postTrackShip({ OrderNo: order.orderNo, Access: otpString });
   };
   useEffect(() => {
     if (!open) {
