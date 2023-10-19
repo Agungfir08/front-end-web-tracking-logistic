@@ -6,6 +6,7 @@ import OrderDetails from "../components/order/OrderDetails";
 import Notification from "../components/Notification";
 import NotFound from "../components/NotFound";
 import { OrderContext } from "../context/OrderContext";
+import LoadingTruck from "../components/modals/LoadingTruck";
 
 function Main() {
   const { order, notFound } = useContext(OrderContext);

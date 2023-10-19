@@ -19,8 +19,6 @@ export default function InputForgetCode({ open, handleOpen }) {
 
   const handleSubmitWhatsapp = () => {
     postForgetCodeWhatsapp({
-      phone: order.phone,
-      AccessCode: "E243",
       OrderNo: order.orderNo,
     });
     handleOpen();
