@@ -1,7 +1,5 @@
 import Lottie from "lottie-react";
 import loadingTruck from "../../assets/Lottie/truck_loading.json";
-import { useContext } from "react";
-import { OrderContext } from "../../context/OrderContext";
 
 export default function LoadingTruck() {
   return (

@@ -99,8 +99,8 @@ export default function InputAccessCode({ open, handleOpen }) {
           <Lottie animationData={loadingTruck} style={{ height: 185 }} />
         ) : (
           <form onSubmit={handleSubmit}>
-            <div className=" flex flex-col gap-y-5">
-              <DialogHeader className="justify-center !text-center !font-poppins !font-bold !text-2xl !p-0 sm:!text-xl">
+            <div className="flex flex-col gap-y-5">
+              <DialogHeader className=" justify-center !text-center !font-poppins !font-bold !text-2xl !p-0 sm:!text-xl">
                 Masukkan Kode Akses
               </DialogHeader>
               <div className="flex justify-evenly items-center">
@@ -119,23 +119,21 @@ export default function InputAccessCode({ open, handleOpen }) {
                   );
                 })}
               </div>
-              <DialogFooter className="justify-center !p-0 ">
-                <div className="flex flex-col items-center gap-1">
-                  <button
-                    className="w-[150px] bg-[--maincolor] rounded-md text-white py-1.5 font-semibold sm:text-sm"
-                    type="submit">
-                    Lacak
-                  </button>
-                  <div className=" mt-1">
-                    <p className="text-black text-sm sm:text-xs">
-                      lupa akses kode anda?{" "}
-                      <a
-                        className="text-blue-700 hover:underline hover:underline-offset-2 hover:cursor-pointer font-medium transition "
-                        onClick={handleOpenForgetCode}>
-                        Klik disini
-                      </a>
-                    </p>
-                  </div>
+              <DialogFooter className=" flex flex-col justify-center !p-0 gap-y-1">
+                <button
+                  className="w-[150px] bg-[--maincolor] rounded-md text-white py-1.5 font-semibold sm:text-sm"
+                  type="submit">
+                  Lacak
+                </button>
+                <div className=" mt-1">
+                  <p className="text-black text-sm sm:text-xs">
+                    lupa akses kode anda?{" "}
+                    <a
+                      className="text-blue-700 hover:underline hover:underline-offset-2 hover:cursor-pointer font-medium transition "
+                      onClick={handleOpenForgetCode}>
+                      Klik disini
+                    </a>
+                  </p>
                 </div>
               </DialogFooter>
             </div>
