@@ -9,6 +9,7 @@ import { NotificationContext } from "../../context/NotificationContext";
 import { actionTypes } from "../../reducer/NotificationActionTypes";
 import Lottie from "lottie-react";
 import loadingTruck from "../../assets/Lottie/truck_loading.json";
+import Button from "../Button";
 
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
@@ -120,11 +121,7 @@ export default function InputAccessCode({ open, handleOpen }) {
                 })}
               </div>
               <DialogFooter className=" flex flex-col justify-center !p-0 gap-y-1">
-                <button
-                  className="w-[150px] bg-[--maincolor] rounded-md text-white py-1.5 font-semibold sm:text-sm"
-                  type="submit">
-                  Lacak
-                </button>
+                <Button text="Enter" type="sumbit" />
                 <div className=" mt-1">
                   <p className="text-black text-sm sm:text-xs">
                     lupa akses kode anda?{" "}
