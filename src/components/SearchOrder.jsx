@@ -3,11 +3,14 @@ import { useFormik } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
 import { OrderContext } from "../context/OrderContext";
 import { inputRegex } from "../utils/InputFormat";
-import FetchOrder from "../features/FetchOrder";
 import { CROSS } from "./Icon";
 import { NotificationContext } from "../context/NotificationContext";
 import { actionTypes } from "../reducer/NotificationActionTypes";
-import LoadingTruck from "./modals/LoadingTruck";
+import FetchOrder from "../features/FetchOrder";
+import loadingTruck from "../assets/Lottie/truck_loading.json";
+import Lottie from "lottie-react";
+import axios from "axios";
+
 function SearchOrder() {
   const { setOrder, setAuthenticated, setNotFound } = useContext(OrderContext);
   const { dispatch } = useContext(NotificationContext);
@@ -69,7 +72,13 @@ function SearchOrder() {
 
   return (
     <>
-      {isLoading && <LoadingTruck />}
+      {isLoading && (
+        <div
+          className=" fixed top-0 left-0 bg-black/40 flex justify-center items-center w-full h-full"
+          style={{ zIndex: 10000 }}>
+          <Lottie animationData={loadingTruck} style={{ height: 225 }} />
+        </div>
+      )}
       <div className=" mt-8">
         <div className="flex flex-col items-center gap-5 sm:px-7 md:px-12">
           <h1 className=" font-bold text-2xl sm:text-lg">Cek Delivery Order</h1>

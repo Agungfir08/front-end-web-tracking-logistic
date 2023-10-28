@@ -83,8 +83,6 @@ export default function InputAccessCode({ open, handleOpen }) {
     }
   }, [openForgetCode]);
 
-  console.log("test", isLoading);
-
   return (
     <>
       <Dialog
@@ -97,7 +95,7 @@ export default function InputAccessCode({ open, handleOpen }) {
         }}
         className="p-6 xl:!max-w-[30%] xl:!min-w-[30%] lg:!max-w-[40%] lg:!min-w-[40%] md:!max-w-[50%] md:!min-w-[50%]">
         {isLoading ? (
-          <Lottie animationData={loadingTruck} style={{ height: 185 }} />
+          <Lottie animationData={loadingTruck} style={{ height: 190 }} />
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-y-5">
