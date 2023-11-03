@@ -25,7 +25,7 @@ function Main() {
       <Jumbotron />
       <div
         ref={orderRef}
-        className="sm:scroll-mt-16 md:scroll-mt-24 lg:scroll-mt-28 scroll-mt-15 ">
+        className="sm:scroll-mt-16 md:scroll-mt-24 lg:scroll-mt-28">
         <SearchOrder />
       </div>
       <div className="flex justify-center">
