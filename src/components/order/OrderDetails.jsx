@@ -9,7 +9,7 @@ export function CommonInfo() {
   return (
     <>
       <div className="flex-col gap-2  ">
-        <h1 className=" font-semibold ">Tracking Info</h1>
+        <h1 className=" font-semibold ">Tracking Result</h1>
         <TrackingInfo />
       </div>
       <div className="flex-col gap-2">
@@ -25,7 +25,7 @@ function OrderDetails() {
   return (
     <div className=" mt-4 max-w-7xl mx-auto md:w-fit lg:w-fit sm:mx-7 flex flex-wrap xl:flex-nowrap  bg-gray-100 sm:flex-col md:flex-col lg:flex-col justify-center items-center gap-6 rounded-2xl p-8 sm:p-6">
       <div className="flex-col gap-2">
-        <h1 className=" font-semibold">Order Info</h1>
+        <h1 className=" font-semibold">Order Detail</h1>
         <OrderInfo />
       </div>
       {authenticated ? (

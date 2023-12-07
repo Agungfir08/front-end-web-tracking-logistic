@@ -12,7 +12,7 @@ function ShipmentInfo() {
     ? queryClient.getQueryData(["TrackShipInfo", order.orderNo])
     : null;
 
-  const { Services, Via, TypeOfHandling, TypeOfRate, OriginDestination } =
+  const { Services, Via, TypeOfHandling, TypeOfRate, OriginDestination, customerAddress } =
     data?.Shipment_Info || {};
 
   const infoItems = [
@@ -20,6 +20,7 @@ function ShipmentInfo() {
     { name: "Via", value: Via },
     { name: "Type of Handling", value: TypeOfHandling },
     { name: "Type of Rate", value: TypeOfRate },
+    { name: "Customer Addres", value: customerAddress },
     { name: "Origin Destination", value: OriginDestination },
   ];
   return (
@@ -34,9 +35,9 @@ function ShipmentInfo() {
           <InfoItem key={index} name={item.name} value={item.value} />
         ))}
       </div>
-      <div className="flex justify-center">
-        <img src={delivery} alt="Logo Delivery" className="w-64" />
-      </div>
+      {/* <div className="flex justify-center">
+        <img src={delivery} alt="Logo Delivery" className="w-52" />
+      </div> */}
     </div>
   );
 }

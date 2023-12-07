@@ -35,11 +35,18 @@ function SearchOrder() {
   const handleChange = useCallback(
     (e) => {
       const inputValue = e.target.value;
-      if (inputRegex.test(inputValue)) {
+      const maxLength = 16;
+  
+      if (inputValue.length <= maxLength && inputRegex.test(inputValue)) {
         formik.handleChange(e);
+      } else if (inputValue.length > maxLength) {
+        dispatch({
+          type: actionTypes.ERROR,
+          message: `Nomor DO tidak boleh lebih dari ${maxLength} karakter`,
+        });
       }
     },
-    [formik]
+    [formik, dispatch]
   );
 
   const clearInput = () => {
