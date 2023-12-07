@@ -17,22 +17,26 @@ function OrderInfo() {
   } = data?.data || {};
 
   const infoItems = [
-    { name: "Customer Id", value: customerId },
-    { name: "Customer Name", value: customerName },
-    { name: "Customer Address", value: customerAddress },
-    { name: "Receiver Name", value: receiverName },
-    { name: "Receiver Address", value: receiverAddress },
+    { name: "Ref Number", value: "202144612" },
+    { name: "Order Number", value: "GWDPLW2021070001" },
+    { name: "Order Date", value: "2021-07-01" },
+    { name: "Commodity", value: "Food" },
+    { name: "Remarks", value: "Beverage" },
+    { name: "Receiver Name", value: "Ipul" },
+    { name: "Receiver Address", value: "Gowa" },
   ];
 
   return (
-    <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
-      <h1 className="  sm:text-base text-lg text-[--maincolor] font-semibold">
-        {order.orderNo}
-      </h1>
+    <div className="bg-white rounded-lg p-6 flex flex-col justify-center sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <div className=" flex flex-col gap-4">
-        {infoItems.map((item, index) => (
+        {infoItems.slice(0, 4).map((item, index) => (
           <InfoItem key={index} value={item.value} name={item.name} />
         ))}
+        <div className="flex flex-rows justify-between">
+          {infoItems.slice(-2).map((item, index) => (
+            <InfoItem key={index} value={item.value} name={item.name} />
+          ))}
+        </div>
       </div>
     </div>
   );
