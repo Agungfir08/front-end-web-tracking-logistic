@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { OrderContext } from "../../context/OrderContext";
-import { useQueryClient } from "@tanstack/react-query";
-import InfoItem from "./InfoItem";
+import { useContext } from 'react';
+import { OrderContext } from '../../context/OrderContext';
+import { useQueryClient } from '@tanstack/react-query';
+import InfoItem from './InfoItem';
 
 function OrderInfo() {
   const queryClient = useQueryClient();
   const { order } = useContext(OrderContext);
-  const data = queryClient.getQueryData(["OrderInfo", order.orderNo]);
+  const data = queryClient.getQueryData(['OrderInfo', order.orderNo]);
 
   const {
     refNumber,
@@ -19,17 +19,19 @@ function OrderInfo() {
   } = data?.data || {};
 
   const infoItems = [
-    { name: "Ref Number", value: refNumber },
-    { name: "order number", value: OrderNo },
-    { name: "order date", value: orderDate },
-    { name: "commodity", value: commodity },
-    { name: "remarks", value: remarks },
-    { name: "Receiver Name", value: receiverName },
-    { name: "Receiver Address", value: receiverAddress },
+    { name: 'Ref Number', value: refNumber },
+    { name: 'order number', value: OrderNo },
+    { name: 'order date', value: orderDate },
+    { name: 'commodity', value: commodity },
+    { name: 'remarks', value: remarks },
+    { name: 'Receiver Name', value: receiverName },
+    { name: 'Receiver Address', value: receiverAddress },
   ];
 
   return (
-    <div className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
+    <div
+      data-test="order-info"
+      className="bg-white rounded-lg p-6 flex flex-col justify-between sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       {/* <h1 className="  sm:text-base text-lg text-[--maincolor] font-semibold">
         {order.orderNo}
       </h1> */}

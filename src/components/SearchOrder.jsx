@@ -1,34 +1,34 @@
-import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
-import { useFormik } from "formik";
-import { useQueryClient } from "@tanstack/react-query";
-import { OrderContext } from "../context/OrderContext";
-import { inputRegex } from "../utils/InputFormat";
-import { CROSS } from "./Icon";
-import { NotificationContext } from "../context/NotificationContext";
-import { actionTypes } from "../reducer/NotificationActionTypes";
-import FetchOrder from "../features/FetchOrder";
-import loadingTruck from "../assets/Lottie/truck_loading.json";
-import Lottie from "lottie-react";
-import axios from "axios";
+import { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import { useFormik } from 'formik';
+import { useQueryClient } from '@tanstack/react-query';
+import { OrderContext } from '../context/OrderContext';
+import { inputRegex } from '../utils/InputFormat';
+import { CROSS } from './Icon';
+import { NotificationContext } from '../context/NotificationContext';
+import { actionTypes } from '../reducer/NotificationActionTypes';
+import FetchOrder from '../features/FetchOrder';
+import loadingTruck from '../assets/Lottie/truck_loading.json';
+import Lottie from 'lottie-react';
+import axios from 'axios';
 
 function SearchOrder() {
   const { setOrder, setAuthenticated, setNotFound } = useContext(OrderContext);
   const { dispatch } = useContext(NotificationContext);
-  const orderRef = useRef("");
+  const orderRef = useRef('');
   const queryClient = useQueryClient();
 
   const formik = useFormik({
     initialValues: {
-      numberDO: "",
+      numberDO: '',
     },
     onSubmit: (values) => {
       const { numberDO } = values;
       if (!numberDO)
         dispatch({
           type: actionTypes.ERROR,
-          message: "Nomor DO tidak boleh kosong",
+          message: 'Nomor DO tidak boleh kosong',
         });
-      else fetchOrderDetail(numberDO);
+      else fetchOrderDetail(numberDO.toUpperCase());
     },
   });
 
@@ -36,7 +36,7 @@ function SearchOrder() {
     (e) => {
       const inputValue = e.target.value;
       const maxLength = 16;
-  
+
       if (inputValue.length <= maxLength && inputRegex.test(inputValue)) {
         formik.handleChange(e);
       } else if (inputValue.length > maxLength) {
@@ -50,14 +50,14 @@ function SearchOrder() {
   );
 
   const clearInput = () => {
-    formik.setFieldValue("numberDO", "");
+    formik.setFieldValue('numberDO', '');
     orderRef.current.focus();
   };
 
   const { mutate: fetchOrderDetail, isLoading } = FetchOrder({
     onSuccess: (data) => {
       queryClient.setQueryData(
-        ["OrderInfo", data.data.data.OrderNo],
+        ['OrderInfo', data.data.data.OrderNo],
         data.data
       );
       setOrder({
@@ -93,6 +93,7 @@ function SearchOrder() {
             <div className="flex justify-center">
               <div className="relative ">
                 <input
+                  data-test="input-numberDO"
                   type="text"
                   name="numberDO"
                   placeholder="DOXXXXXXXXXX"
@@ -111,6 +112,7 @@ function SearchOrder() {
                 )}
               </div>
               <button
+                data-test="enter-button"
                 type="submit"
                 className="bg-[--maincolor] text-white px-8 sm:px-5 rounded-e-md disabled:bg-[--maincolor] sm:text-sm">
                 Lacak

@@ -1,18 +1,18 @@
-import { useContext } from "react";
-import OrderInfo from "./OrderInfo";
-import TrackingInfo from "./TrackingInfo";
-import ShipmentInfo from "./ShipmentInfo";
-import AccessCode from "../AccessCode";
-import { OrderContext } from "../../context/OrderContext";
+import { useContext } from 'react';
+import OrderInfo from './OrderInfo';
+import TrackingInfo from './TrackingInfo';
+import ShipmentInfo from './ShipmentInfo';
+import AccessCode from '../AccessCode';
+import { OrderContext } from '../../context/OrderContext';
 
 export function CommonInfo() {
   return (
     <>
-      <div className="flex-col gap-2  ">
+      <div className="flex-col">
         <h1 className=" font-semibold ">Tracking Result</h1>
         <TrackingInfo />
       </div>
-      <div className="flex-col gap-2">
+      <div className="flex-col">
         <h1 className=" font-semibold ">Shipment Info</h1>
         <ShipmentInfo />
       </div>
@@ -23,8 +23,10 @@ export function CommonInfo() {
 function OrderDetails() {
   const { authenticated } = useContext(OrderContext);
   return (
-    <div className=" mt-4 max-w-7xl mx-auto md:w-fit lg:w-fit sm:mx-7 flex flex-wrap xl:flex-nowrap  bg-gray-100 sm:flex-col md:flex-col lg:flex-col justify-center items-center gap-6 rounded-2xl p-8 sm:p-6">
-      <div className="flex-col gap-2">
+    <div
+      data-test="data-delivery-details"
+      className=" mt-4 max-w-7xl mx-auto md:w-fit lg:w-fit sm:mx-7 flex flex-wrap xl:flex-nowrap  bg-gray-100 sm:flex-col md:flex-col lg:flex-col justify-center items-center gap-6 rounded-2xl p-8 sm:p-6">
+      <div className="flex-col">
         <h1 className=" font-semibold">Order Detail</h1>
         <OrderInfo />
       </div>

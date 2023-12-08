@@ -10,10 +10,12 @@ export const navLink = [
   {
     id: "https://kallatranslog.co.id/tentang_kami",
     title: "About Us",
+    dataTest: "nav-aboutUs",
   },
   {
     id: "https://kallatranslog.co.id/kontak_kami",
     title: "Contact",
+    dataTest: "nav-contact",
   },
 ];
 
@@ -45,6 +47,7 @@ function Navbar() {
                 <a
                   href={`${key.id}`}
                   target="_blank"
+                  data-test={key.dataTest}
                   className={` cursor-pointer transition hover:text-[--maincolor] ${
                     index === navLink.length - 1
                       ? "text-[--maincolor] px-10 py-2 border-[3px] border-[--maincolor] rounded-xl hover:text-white hover:bg-[--maincolor]"

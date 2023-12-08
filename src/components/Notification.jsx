@@ -1,7 +1,7 @@
-import { useCallback, useContext, useEffect } from "react";
-import { FAILED, SUCCESS } from "./Icon";
-import { NotificationContext } from "../context/NotificationContext";
-import { actionTypes } from "../reducer/NotificationActionTypes";
+import { useCallback, useContext, useEffect } from 'react';
+import { FAILED, SUCCESS } from './Icon';
+import { NotificationContext } from '../context/NotificationContext';
+import { actionTypes } from '../reducer/NotificationActionTypes';
 
 export default function Notification() {
   const { state, dispatch } = useContext(NotificationContext);
@@ -23,9 +23,10 @@ export default function Notification() {
     <>
       {state.notificationType !== null && (
         <div
+          data-test="notification-info"
           className={`fixed top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-black w-fit py-3 sm:py-2.5 px-8 rounded-full flex justify-center gap-2 items-center animate-notifAnimation`}
           style={{ zIndex: 10000 }}>
-          {state.notificationType === "success" ? <SUCCESS /> : <FAILED />}
+          {state.notificationType === 'success' ? <SUCCESS /> : <FAILED />}
           <p className=" text-lg sm:text-sm sm:whitespace-nowrap">
             {state.notificationText}
           </p>

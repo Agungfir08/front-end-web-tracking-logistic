@@ -22,6 +22,7 @@ export default function InputAccessCode({ open, handleOpen }) {
   const [otp, setOtp] = useState(new Array(4).fill(""));
   const [activeOTPIndex, setActiveOTPIndex] = useState(0);
 
+  console.log("order no :", order.orderNo);
   const handleOpenForgetCode = () => {
     setOpenForgetCode(!openForgetCode);
   };
