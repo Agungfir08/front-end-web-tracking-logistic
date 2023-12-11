@@ -1,26 +1,28 @@
-import { useContext } from "react";
-import { Stepper, Step } from "@material-tailwind/react";
+import { useContext } from 'react';
+import { Stepper, Step } from '@material-tailwind/react';
 import {
   Timeline,
   TimelineItem,
   TimelineConnector,
   TimelineHeader,
   TimelineIcon,
-} from "@material-tailwind/react";
-import { OrderContext } from "../../context/OrderContext";
-import { useQueryClient } from "@tanstack/react-query";
-import { DELIVERY, ENTRY, MATCHING, RECEIVED } from "../Icon";
+} from '@material-tailwind/react';
+import { OrderContext } from '../../context/OrderContext';
+import { useQueryClient } from '@tanstack/react-query';
+import { DELIVERY, ENTRY, MATCHING, RECEIVED } from '../Icon';
 
 function TrackingInfo() {
   const { order, authenticated } = useContext(OrderContext);
   const queryClient = useQueryClient();
 
   const data = authenticated
-    ? queryClient.getQueryData(["TrackShipInfo", order.orderNo])
+    ? queryClient.getQueryData(['TrackShipInfo', order.orderNo])
     : null;
 
   return (
-    <div className="bg-white rounded-lg px-8 py-6 flex flex-col gap-19 sm:gap-17 sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
+    <div
+      data-test="tracking-info"
+      className="bg-white rounded-lg px-8 py-6 flex flex-col gap-19 sm:gap-17 sm:w-[310px] sm:h-[400px] w-[375px] h-[440px]">
       <div className="mt-6">
         <Stepper
           activeStep={data?.Tracking.length - 1}
@@ -28,10 +30,10 @@ function TrackingInfo() {
           activeLineClassName="bg-[--maincolor]"
           className=" z-0">
           {[
-            { component: <ENTRY />, label: "Entry" },
-            { component: <MATCHING />, label: "Matching" },
-            { component: <DELIVERY />, label: "Delivery" },
-            { component: <RECEIVED />, label: "Received" },
+            { component: <ENTRY />, label: 'Entry' },
+            { component: <MATCHING />, label: 'Matching' },
+            { component: <DELIVERY />, label: 'Delivery' },
+            { component: <RECEIVED />, label: 'Received' },
           ].map((step, index) => (
             <Step
               key={index}
@@ -49,18 +51,21 @@ function TrackingInfo() {
       <div className="z-0">
         <Timeline>
           {data?.Tracking.map((status, index) => (
-            <TimelineItem key={index} className={index === 3 ? "h-8" : "h-16"}>
+            <TimelineItem
+              data-test={`tracking-info-stepper${index}`}
+              key={index}
+              className={index === 3 ? 'h-8' : 'h-16'}>
               {index !== data?.Tracking.length - 1 && <TimelineConnector />}
               <TimelineHeader className="h-3">
                 <TimelineIcon
                   color={
                     index === 0
-                      ? "blue"
+                      ? 'blue'
                       : index === 1
-                      ? "red"
+                      ? 'red'
                       : index === 2
-                      ? "yellow"
-                      : "green"
+                      ? 'yellow'
+                      : 'green'
                   }
                 />
                 <div className="flex justify-between w-full items-center">
@@ -69,12 +74,12 @@ function TrackingInfo() {
                   </p>
                   <p className="text-sm sm:text-xs text-end whitespace-nowrap">
                     {new Date(status.Datetime)
-                      .toLocaleDateString("en-GB")
-                      .split("/")
+                      .toLocaleDateString('en-GB')
+                      .split('/')
                       .reverse()
-                      .join("-")}
+                      .join('-')}
                     <br />
-                    {new Date(status.Datetime).toLocaleTimeString("en-GB")}
+                    {new Date(status.Datetime).toLocaleTimeString('en-GB')}
                   </p>
                 </div>
               </TimelineHeader>

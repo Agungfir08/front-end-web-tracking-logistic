@@ -1,6 +1,6 @@
-import { useState } from "react";
-import InputAccessCode from "./modals/InputAccessCode";
-import Button from "./Button";
+import { useState } from 'react';
+import InputAccessCode from './modals/InputAccessCode';
+import Button from './Button';
 
 const AccessCode = () => {
   const [open, setOpen] = useState(false);
@@ -11,7 +11,12 @@ const AccessCode = () => {
       <h3 className="text-center font-semibold">
         Masukkan Kode Akses Anda Untuk Melihat Detail Tracking
       </h3>
-      <Button text="Masukkan" onClick={handleOpen} type="button" />
+      <Button
+        dataTest="input-button-accessCode"
+        text="Masukkan"
+        onClick={handleOpen}
+        type="button"
+      />
       <InputAccessCode open={open} handleOpen={handleOpen} />
     </div>
   );

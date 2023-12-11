@@ -1,15 +1,15 @@
-import { useRef, useEffect, useState, useContext, useReducer } from "react";
-import { Dialog, DialogHeader, DialogFooter } from "@material-tailwind/react";
-import { inputRegex } from "../../utils/InputFormat";
-import PostTrackShip from "../../features/PostTrackShip";
-import InputForgetCode from "./InputForgetCode";
-import { useQueryClient } from "@tanstack/react-query";
-import { OrderContext } from "../../context/OrderContext";
-import { NotificationContext } from "../../context/NotificationContext";
-import { actionTypes } from "../../reducer/NotificationActionTypes";
-import Lottie from "lottie-react";
-import loadingTruck from "../../assets/Lottie/truck_loading.json";
-import Button from "../Button";
+import { useRef, useEffect, useState, useContext, useReducer } from 'react';
+import { Dialog, DialogHeader, DialogFooter } from '@material-tailwind/react';
+import { inputRegex } from '../../utils/InputFormat';
+import PostTrackShip from '../../features/PostTrackShip';
+import InputForgetCode from './InputForgetCode';
+import { useQueryClient } from '@tanstack/react-query';
+import { OrderContext } from '../../context/OrderContext';
+import { NotificationContext } from '../../context/NotificationContext';
+import { actionTypes } from '../../reducer/NotificationActionTypes';
+import Lottie from 'lottie-react';
+import loadingTruck from '../../assets/Lottie/truck_loading.json';
+import Button from '../Button';
 
 let currentOTPIndex = 0;
 export default function InputAccessCode({ open, handleOpen }) {
@@ -19,10 +19,10 @@ export default function InputAccessCode({ open, handleOpen }) {
   const { order, setAuthenticated } = useContext(OrderContext);
   const { dispatch } = useContext(NotificationContext);
 
-  const [otp, setOtp] = useState(new Array(4).fill(""));
+  const [otp, setOtp] = useState(new Array(4).fill(''));
   const [activeOTPIndex, setActiveOTPIndex] = useState(0);
 
-  console.log("order no :", order.orderNo);
+  console.log('order no :', order.orderNo);
   const handleOpenForgetCode = () => {
     setOpenForgetCode(!openForgetCode);
   };
@@ -42,18 +42,18 @@ export default function InputAccessCode({ open, handleOpen }) {
   const handleOnKeyDown = (key, index) => {
     const keys = key.key;
     currentOTPIndex = index;
-    if (keys === "Backspace") setActiveOTPIndex(currentOTPIndex - 1);
+    if (keys === 'Backspace') setActiveOTPIndex(currentOTPIndex - 1);
   };
 
   const { mutate: postTrackShip, isLoading } = PostTrackShip({
     onSuccess: (data) => {
-      queryClient.setQueryData(["TrackShipInfo", order.orderNo], data.data);
+      queryClient.setQueryData(['TrackShipInfo', order.orderNo], data.data);
       setAuthenticated(true);
       dispatch({ type: actionTypes.SUCCESS, message: data.data.message });
       handleOpen();
     },
     onError: (data) => {
-      setOtp(Array(4).fill(""));
+      setOtp(Array(4).fill(''));
       setActiveOTPIndex(0);
       dispatch({
         type: actionTypes.ERROR,
@@ -64,12 +64,12 @@ export default function InputAccessCode({ open, handleOpen }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const otpString = otp.join("").toUpperCase();
+    const otpString = otp.join('').toUpperCase();
     postTrackShip({ OrderNo: order.orderNo, Access: otpString });
   };
   useEffect(() => {
     if (!open) {
-      setOtp(Array(4).fill(""));
+      setOtp(Array(4).fill(''));
       setActiveOTPIndex(0);
     }
   }, [open]);
@@ -87,6 +87,7 @@ export default function InputAccessCode({ open, handleOpen }) {
   return (
     <>
       <Dialog
+        data-test="dialog-input-access-code"
         open={open}
         size="sm"
         handler={handleOpen}
@@ -108,6 +109,7 @@ export default function InputAccessCode({ open, handleOpen }) {
                   return (
                     <div key={index}>
                       <input
+                        data-test={`input-otp${index}`}
                         ref={index === activeOTPIndex ? inputRef : null}
                         onChange={handleChange}
                         onKeyDown={(e) => handleOnKeyDown(e, index)}
@@ -120,11 +122,16 @@ export default function InputAccessCode({ open, handleOpen }) {
                 })}
               </div>
               <DialogFooter className=" flex flex-col justify-center !p-0 gap-y-1">
-                <Button text="Enter" type="sumbit" />
+                <Button
+                  dataTest="enter-button-accessCode"
+                  text="Enter"
+                  type="sumbit"
+                />
                 <div className=" mt-1">
                   <p className="text-black text-sm sm:text-xs">
-                    lupa akses kode anda?{" "}
+                    lupa akses kode anda?{' '}
                     <a
+                      data-test="input-forget-code"
                       className="text-blue-700 hover:underline hover:underline-offset-2 hover:cursor-pointer font-medium transition "
                       onClick={handleOpenForgetCode}>
                       Klik disini

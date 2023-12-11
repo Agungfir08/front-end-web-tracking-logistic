@@ -1,12 +1,12 @@
-import { Dialog, DialogBody } from "@material-tailwind/react";
-import FAQ from "../../assets/FAQ.png";
-import { EMAIL, WHATSAPP } from "../Icon";
-import PostForgetCodeEmail from "../../features/PostForgetCodeEmail";
-import { useContext, useReducer } from "react";
-import { OrderContext } from "../../context/OrderContext";
-import PostForgetCodeWhatsapp from "../../features/PostForgetCodeWhatsapp";
-import { NotificationContext } from "../../context/NotificationContext";
-import { actionTypes } from "../../reducer/NotificationActionTypes";
+import { Dialog, DialogBody } from '@material-tailwind/react';
+import FAQ from '../../assets/FAQ.png';
+import { EMAIL, WHATSAPP } from '../Icon';
+import PostForgetCodeEmail from '../../features/PostForgetCodeEmail';
+import { useContext, useReducer } from 'react';
+import { OrderContext } from '../../context/OrderContext';
+import PostForgetCodeWhatsapp from '../../features/PostForgetCodeWhatsapp';
+import { NotificationContext } from '../../context/NotificationContext';
+import { actionTypes } from '../../reducer/NotificationActionTypes';
 
 export default function InputForgetCode({ open, handleOpen }) {
   const { dispatch } = useContext(NotificationContext);
@@ -53,6 +53,7 @@ export default function InputForgetCode({ open, handleOpen }) {
   return (
     <>
       <Dialog
+        data-test="dialog-forget-code"
         open={open}
         size="sm"
         handler={handleOpen}
@@ -67,13 +68,13 @@ export default function InputForgetCode({ open, handleOpen }) {
         {[
           {
             icon: <EMAIL />,
-            title: "Via Email",
+            title: 'Via Email',
             text: order.email,
             onClick: handleSubmitEmail,
           },
           {
             icon: <WHATSAPP />,
-            title: "Via Whatsapp",
+            title: 'Via Whatsapp',
             text: order.phone,
             onClick: handleSubmitWhatsapp,
           },
@@ -82,9 +83,10 @@ export default function InputForgetCode({ open, handleOpen }) {
             key={index}
             divider
             className={`!font-poppins hover:bg-black/5 hover:cursor-pointer ${
-              index === array.length - 1 && "!border-b-0"
+              index === array.length - 1 && '!border-b-0'
             }`}>
             <a
+              data-test={`forget-code-${index}`}
               onClick={item.onClick}
               className="font-semibold text-black sm:text-sm flex flex-row">
               <span className=" mr-4">{item.icon}</span>
