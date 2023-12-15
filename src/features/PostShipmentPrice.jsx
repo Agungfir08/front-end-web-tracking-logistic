@@ -1,11 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
 import { api } from "../lib/api";
 
-export default function PostForgetCodeWhatsapp({ onSuccess, onError }) {
+export default function PostShipmentPrice({ onSuccess, onError }) {
   return useMutation({
     mutationFn: async (body) => {
-      const input = await api.post(`/send-access-code/whatsapp`, body);
-      return input;
+      const detail = await api.post(
+        `/shipment-price`,
+        body
+      );
+      return detail;
     },
     onSuccess,
     onError,
