@@ -60,13 +60,28 @@ describe('fundamental testing', () => {
     cy.getDataTest('notification-info').should('not.exist');
     cy.getDataTest('dialog-input-access-code').should('exist');
 
-    //send forget code via whatsapp
+    //send forget code via email
     cy.getDataTest('input-forget-code').click();
     cy.getDataTest('dialog-forget-code').should('exist');
     cy.getDataTest('forget-code-0').click();
     cy.getDataTest('notification-info')
       .should('exist')
       .contains(/Kode akses terkirim/i);
+    cy.wait(4500);
+    cy.getDataTest('notification-info').should('not.exist');
+    cy.getDataTest('dialog-forget-code').should('not.exist');
+
+    //send forget code via whatsapp
+    cy.getDataTest('input-button-accessCode').click();
+    cy.getDataTest('dialog-input-access-code')
+      .should('exist')
+      .contains(/Masukkan Kode Akses/i);
+    cy.getDataTest('input-forget-code').click();
+    cy.getDataTest('dialog-forget-code').should('exist');
+    cy.getDataTest('forget-code-1').click();
+    cy.getDataTest('notification-info')
+      .should('exist')
+      .contains(/Kode Akses Berhasil Di kirim/i);
     cy.wait(4500);
     cy.getDataTest('notification-info').should('not.exist');
     cy.getDataTest('dialog-forget-code').should('not.exist');
