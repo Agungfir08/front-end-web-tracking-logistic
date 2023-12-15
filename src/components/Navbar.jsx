@@ -1,6 +1,8 @@
 import Logo from "../assets/LogoKalla.svg";
 import { useState } from "react";
 import { BURGER, CROSS } from "./Icon";
+import CheckPrices from "./modals/CheckPrices";
+// import CheckPrices from "./modals/CheckPrices2";
 
 export const navLink = [
   {
@@ -12,11 +14,11 @@ export const navLink = [
     title: "About Us",
     dataTest: "nav-aboutUs",
   },
-  {
-    id: "https://kallatranslog.co.id/kontak_kami",
-    title: "Contact",
-    dataTest: "nav-contact",
-  },
+  // {
+  //   id: "https://kallatranslog.co.id/kontak_kami",
+  //   title: "Contact",
+  //   dataTest: "nav-contact",
+  // },
 ];
 
 function Navbar() {
@@ -48,15 +50,18 @@ function Navbar() {
                   href={`${key.id}`}
                   target="_blank"
                   data-test={key.dataTest}
-                  className={` cursor-pointer transition hover:text-[--maincolor] ${
-                    index === navLink.length - 1
-                      ? "text-[--maincolor] px-10 py-2 border-[3px] border-[--maincolor] rounded-xl hover:text-white hover:bg-[--maincolor]"
-                      : "text-gray-900"
-                  }`}>
+                  className={' cursor-pointer transition hover:text-[--maincolor] text-gray-900'
+                  // ${
+                  //   index === navLink.length - 1
+                  //     ? "text-[--maincolor] px-10 py-2 border-[3px] border-[--maincolor] rounded-xl hover:text-white hover:bg-[--maincolor]"
+                  //     : "text-gray-900"
+                  // }
+                  }>
                   {key.title}
                 </a>
               </li>
             ))}
+            <CheckPrices/>
           </ul>
         </div>
       </div>
@@ -75,6 +80,7 @@ function Navbar() {
                 </a>
               </li>
             ))}
+            <CheckPrices />
           </ul>
         </div>
       )}
