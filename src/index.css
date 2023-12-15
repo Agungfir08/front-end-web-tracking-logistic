@@ -6,14 +6,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "poppins";
+  font-family: 'poppins';
 }
 
 :root {
   --maincolor: #01803d;
-  --mainfont: "poppins";
+  --mainfont: 'poppins';
 }
 
+.scrollbar-hide::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
