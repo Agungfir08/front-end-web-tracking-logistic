@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BICHEVRON } from './Icon';
 
-export default function Dropdown({ title, data, displayItem, selectItem }) {
+export default function Dropdown({ title, data, displayItem, selectItem, onChange }) {
   const [selected, setSelected] = useState('');
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -10,6 +10,7 @@ export default function Dropdown({ title, data, displayItem, selectItem }) {
     const newValue = selectItem(item);
     if (newValue.toLowerCase() !== selected.toLowerCase()) {
       setSelected(newValue);
+      onChange(item)
       setOpen(false);
     }
   };
