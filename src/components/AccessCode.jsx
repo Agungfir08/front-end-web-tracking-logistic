@@ -16,6 +16,8 @@ const AccessCode = () => {
         text="Masukkan"
         onClick={handleOpen}
         type="button"
+        width="150px"
+        rounded="md"
       />
       <InputAccessCode open={open} handleOpen={handleOpen} />
     </div>

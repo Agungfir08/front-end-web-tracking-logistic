@@ -126,6 +126,8 @@ export default function InputAccessCode({ open, handleOpen }) {
                   dataTest="enter-button-accessCode"
                   text="Enter"
                   type="sumbit"
+                  width="150px"
+                  rounded="md"
                 />
                 <div className=" mt-1">
                   <p className="text-black text-sm sm:text-xs">

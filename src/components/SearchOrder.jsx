@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import { useFormik } from 'formik';
 import { useQueryClient } from '@tanstack/react-query';
 import { OrderContext } from '../context/OrderContext';
@@ -9,7 +9,7 @@ import { actionTypes } from '../reducer/NotificationActionTypes';
 import FetchOrder from '../features/FetchOrder';
 import loadingTruck from '../assets/Lottie/truck_loading.json';
 import Lottie from 'lottie-react';
-import axios from 'axios';
+import Button from './Button';
 
 function SearchOrder() {
   const { setOrder, setAuthenticated, setNotFound } = useContext(OrderContext);
@@ -98,7 +98,7 @@ function SearchOrder() {
                   name="numberDO"
                   placeholder="DOXXXXXXXXXX"
                   autoComplete="off"
-                  className=" border border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full py-1.5 pl-2.5 pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none sm:text-sm"
+                  className=" border border-1 border-gray-900 uppercase rounded-s-md w-80 sm:w-full py-2 pl-2.5 pr-8 focus:ring-1 focus:border-[--maincolor] focus:ring-[--maincolor] focus:outline-none sm:text-sm"
                   onChange={handleChange}
                   value={formik.values.numberDO}
                   ref={orderRef}
@@ -111,12 +111,7 @@ function SearchOrder() {
                   </div>
                 )}
               </div>
-              <button
-                data-test="enter-button"
-                type="submit"
-                className="bg-[--maincolor] text-white px-8 sm:px-5 rounded-e-md disabled:bg-[--maincolor] sm:text-sm">
-                Lacak
-              </button>
+              <Button type="submit" text="Lacak" width="100px" rounded="e-md" />
             </div>
           </form>
         </div>

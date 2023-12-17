@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
-import {
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Typography,
-  Select,
-  Option,
-} from "@material-tailwind/react";
-import shipping from "../../../src/assets/shipping.png";
-import Button from "../Button";
-import Dropdown from "../Dropdown";
-import { data } from "../../utils/Weight";
-import { haversineDistance } from "../../utils/HaversineCalculator";
+import React, { useEffect, useState } from 'react';
+import { Dialog, DialogBody, DialogFooter } from '@material-tailwind/react';
+import shipping from '../../../src/assets/shipping.png';
+import Button from '../Button';
+import Dropdown from '../Dropdown';
+import { data } from '../../utils/Weight';
+import { haversineDistance } from '../../utils/HaversineCalculator';
 
 export default function CheckPrices({ open, handleOpen }) {
   const [provinces, setProvinces] = React.useState(null);
@@ -24,7 +16,7 @@ export default function CheckPrices({ open, handleOpen }) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/shipment-price")
+    fetch('http://localhost:3000/api/v1/shipment-price')
       .then((res) => res.json())
       .then((data) => {
         setProvinces(data.data);
@@ -33,7 +25,7 @@ export default function CheckPrices({ open, handleOpen }) {
 
   useEffect(() => {
     setCalculate({ dari: null, tujuan: null, berat: null });
-    setTotalPrice(0)
+    setTotalPrice(0);
   }, [open]);
 
   const calculatePrice = (dari, tujuan, berat) => {
@@ -43,9 +35,11 @@ export default function CheckPrices({ open, handleOpen }) {
       tujuan.latitude,
       tujuan.longitude
     );
-    const harga = parseFloat(jarak.toFixed(2)) * parseFloat(berat.price);
+    const harga = parseInt(jarak) * parseInt(berat.price);
 
-    setTotalPrice(harga);
+    const formatedPrice = new Intl.NumberFormat('en-DE').format(harga);
+
+    setTotalPrice(formatedPrice);
   };
 
   return (
@@ -58,8 +52,7 @@ export default function CheckPrices({ open, handleOpen }) {
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0.9, y: 0 },
         }}
-        className="xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[40%] lg:!min-w-[40%] md:!max-w-[50%] md:!min-w-[50%]"
-      >
+        className="xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[40%] lg:!min-w-[40%] md:!max-w-[50%] md:!min-w-[50%]">
         <div className="flex flex-col items-center">
           <img className="w-2/3 sm:w-56" src={shipping} />
         </div>
@@ -111,7 +104,7 @@ export default function CheckPrices({ open, handleOpen }) {
                 </p>
                 <div className="rounded-md w-[225px] h-[40px] border border-black">
                   <p className="text-gray-900 px-[12px] py-[5px]">
-                    Rp{parseInt(totalPrice)}
+                    Rp{totalPrice}
                   </p>
                 </div>
               </div>
@@ -129,8 +122,11 @@ export default function CheckPrices({ open, handleOpen }) {
                   calculate.berat
                 );
               }
+              console.log('clicked');
             }}
             text="Check"
+            width="150px"
+            rounded="md"
           />
         </DialogFooter>
       </Dialog>
