@@ -1,26 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;800&family=Inter:wght@400;600;700&family=Lexend+Deca&family=Poppins:wght@300;400;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'poppins';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  --maincolor: #01803d;
-  --mainfont: 'poppins';
+    --maincolor: #01803d;
+    --mainfont: 'poppins';
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
 }
 
 .scrollbar-hide::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
