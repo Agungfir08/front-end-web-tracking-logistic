@@ -3,25 +3,24 @@ import InputAccessCode from './modals/InputAccessCode';
 import Button from './Button';
 
 const AccessCode = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(!open);
 
-  return (
-    <div className=" flex flex-col max-w-[275px] xl:max-w-xs sm:max-w-[225px] items-center ">
-      <h3 className="text-center font-semibold">
-        Masukkan Kode Akses Anda Untuk Melihat Detail Tracking
-      </h3>
-      <Button
-        dataTest="input-button-accessCode"
-        text="Masukkan"
-        onClick={handleOpen}
-        type="button"
-        width="150px"
-        rounded="md"
-      />
-      <InputAccessCode open={open} handleOpen={handleOpen} />
-    </div>
-  );
+    return (
+        <div className=" flex flex-col max-w-[275px] xl:max-w-xs sm:max-w-[225px] items-center ">
+            <h3 className="text-center font-semibold">
+                Masukkan Kode Akses Anda Untuk Melihat Detail Tracking
+            </h3>
+            <Button
+                dataTest="input-button-accessCode"
+                text="Masukkan"
+                onClick={handleOpen}
+                type="button"
+                style="buttonLarge"
+            />
+            <InputAccessCode open={open} handleOpen={handleOpen} />
+        </div>
+    );
 };
 
 export default AccessCode;

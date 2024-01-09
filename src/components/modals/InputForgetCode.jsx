@@ -9,96 +9,102 @@ import { NotificationContext } from '../../context/NotificationContext';
 import { actionTypes } from '../../reducer/NotificationActionTypes';
 
 export default function InputForgetCode({ open, handleOpen }) {
-  const { dispatch } = useContext(NotificationContext);
-  const { order } = useContext(OrderContext);
+    const { dispatch } = useContext(NotificationContext);
+    const { order } = useContext(OrderContext);
 
-  const handleSubmitEmail = () => {
-    postForgetCode({ OrderNo: order.orderNo });
-    handleOpen();
-  };
+    const handleSubmitEmail = () => {
+        postForgetCode({ OrderNo: order.orderNo });
+        handleOpen();
+    };
 
-  const handleSubmitWhatsapp = () => {
-    postForgetCodeWhatsapp({
-      OrderNo: order.orderNo,
-    });
-    handleOpen();
-  };
-
-  const { mutate: postForgetCode, isLoading: loadingEmail } =
-    PostForgetCodeEmail({
-      onSuccess: (data) => {
-        dispatch({ type: actionTypes.SUCCESS, message: data.data.message });
-      },
-      onError: (data) => {
-        dispatch({
-          type: actionTypes.ERROR,
-          message: data.response.data.message,
+    const handleSubmitWhatsapp = () => {
+        postForgetCodeWhatsapp({
+            OrderNo: order.orderNo,
         });
-      },
-    });
+        handleOpen();
+    };
 
-  const { mutate: postForgetCodeWhatsapp, isLoading: loadingWhatsapp } =
-    PostForgetCodeWhatsapp({
-      onSuccess: (data) => {
-        dispatch({ type: actionTypes.SUCCESS, message: data.data.message });
-      },
-      onError: (data) => {
-        dispatch({
-          type: actionTypes.ERROR,
-          message: data.response.data.message,
+    const { mutate: postForgetCode, isLoading: loadingEmail } =
+        PostForgetCodeEmail({
+            onSuccess: (data) => {
+                dispatch({
+                    type: actionTypes.SUCCESS,
+                    message: data.data.message,
+                });
+            },
+            onError: (data) => {
+                dispatch({
+                    type: actionTypes.ERROR,
+                    message: data.response.data.message,
+                });
+            },
         });
-      },
-    });
 
-  return (
-    <>
-      <Dialog
-        data-test="dialog-forget-code"
-        open={open}
-        size="sm"
-        handler={handleOpen}
-        animate={{
-          mount: { scale: 1, y: 0 },
-          unmount: { scale: 0.9, y: 0 },
-        }}
-        className="xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[40%] lg:!min-w-[40%] md:!max-w-[50%] md:!min-w-[50%]">
-        <div className="flex flex-col items-center py-6">
-          <img className=" w-auto sm:w-56" src={FAQ} />
-        </div>
-        {[
-          {
-            icon: <EMAIL />,
-            title: 'Via Email',
-            text: order.email,
-            onClick: handleSubmitEmail,
-          },
-          {
-            icon: <WHATSAPP />,
-            title: 'Via Whatsapp',
-            text: order.phone,
-            onClick: handleSubmitWhatsapp,
-          },
-        ].map((item, index, array) => (
-          <DialogBody
-            key={index}
-            divider
-            className={`!font-poppins hover:bg-black/5 hover:cursor-pointer ${
-              index === array.length - 1 && '!border-b-0'
-            }`}>
-            <a
-              data-test={`forget-code-${index}`}
-              onClick={item.onClick}
-              className="font-semibold text-black sm:text-sm flex flex-row">
-              <span className=" mr-4">{item.icon}</span>
-              {item.title} [
-              <span href="#" className="font-semibold text-gray-500">
-                {item.text}
-              </span>
-              ]
-            </a>
-          </DialogBody>
-        ))}
-      </Dialog>
-    </>
-  );
+    const { mutate: postForgetCodeWhatsapp, isLoading: loadingWhatsapp } =
+        PostForgetCodeWhatsapp({
+            onSuccess: (data) => {
+                dispatch({
+                    type: actionTypes.SUCCESS,
+                    message: data.data.message,
+                });
+            },
+            onError: (data) => {
+                dispatch({
+                    type: actionTypes.ERROR,
+                    message: data.response.data.message,
+                });
+            },
+        });
+
+    return (
+        <>
+            <Dialog
+                data-test="dialog-forget-code"
+                open={open}
+                size="sm"
+                handler={handleOpen}
+                animate={{
+                    mount: { scale: 1, y: 0 },
+                    unmount: { scale: 0.9, y: 0 },
+                }}
+                className="xl:!max-w-[35%] xl:!min-w-[35%] lg:!max-w-[40%] lg:!min-w-[40%] md:!max-w-[50%] md:!min-w-[50%]">
+                <div className="flex flex-col items-center py-6">
+                    <img className=" w-auto sm:w-56" src={FAQ} />
+                </div>
+                {[
+                    {
+                        icon: <EMAIL />,
+                        title: 'Via Email',
+                        text: order.email,
+                        onClick: handleSubmitEmail,
+                    },
+                    {
+                        icon: <WHATSAPP />,
+                        title: 'Via Whatsapp',
+                        text: order.phone,
+                        onClick: handleSubmitWhatsapp,
+                    },
+                ].map((item, index, array) => (
+                    <DialogBody
+                        key={index}
+                        divider
+                        className={`!font-poppins hover:bg-black/5 hover:cursor-pointer ${
+                            index === array.length - 1 && '!border-b-0'
+                        }`}>
+                        <a
+                            data-test={`forget-code-${index}`}
+                            onClick={item.onClick}
+                            className="font-semibold text-black sm:text-sm flex flex-row whitespace-pre">
+                            <span className=" mr-4">{item.icon}</span>
+                            {item.title} [
+                            <span className="font-semibold text-gray-500 ">
+                                {item.text}
+                            </span>
+                            ]
+                        </a>
+                    </DialogBody>
+                ))}
+            </Dialog>
+        </>
+    );
 }

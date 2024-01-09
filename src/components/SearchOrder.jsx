@@ -120,8 +120,7 @@ function SearchOrder() {
                             <Button
                                 type="submit"
                                 text="Lacak"
-                                width="150px"
-                                rounded="e-md"
+                                style="buttonSmall"
                             />
                         </div>
                     </form>
